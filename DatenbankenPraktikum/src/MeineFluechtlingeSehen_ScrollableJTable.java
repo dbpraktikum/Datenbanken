@@ -10,11 +10,11 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
-public class MeineFlüchtlingeSehen_ScrollableJTable extends javax.swing.JFrame{
-	    public MeineFlüchtlingeSehen_ScrollableJTable(){
+public class MeineFluechtlingeSehen_ScrollableJTable extends javax.swing.JFrame{
+	    public MeineFluechtlingeSehen_ScrollableJTable(){
 	        //setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	        this.setDefaultCloseOperation(HIDE_ON_CLOSE);
-	        this.setTitle("Fl�chtlinge anzeigen");
+	        this.setTitle("Fluechtlinge anzeigen");
 	         
 	        JPanel mainPanel = new JPanel();
 	        mainPanel.setLayout(new BorderLayout());
@@ -23,19 +23,19 @@ public class MeineFlüchtlingeSehen_ScrollableJTable extends javax.swing.JFrame{
 	        /*1	[dbo].[Person].[PId], 
 	         *2 [dbo].[Person].[Vorname], 
 	         *3	[dbo].[Person].[Nachname],
-	          4	[dbo].[Fl�chtling].[Original Vorname], 
-	          5 [dbo].[Fl�chtling].[Original Nachname],
-	          6 [dbo].[Fl�chtling].[Geschlecht], 
-	          7 [dbo].[Fl�chtling].[Geburtsdatum],
+	          4	[dbo].[Fluechtling].[Original Vorname], 
+	          5 [dbo].[Fluechtling].[Original Nachname],
+	          6 [dbo].[Fluechtling].[Geschlecht], 
+	          7 [dbo].[Fluechtling].[Geburtsdatum],
 	        8	[dbo].[Person].[Tel], 
 	        9	[dbo].[Person].[Handy], 
 	        10	[dbo].[Person].[eMail],
-	        11   [dbo].[Fl�chtling].[Antragsstatus], 
+	        11   [dbo].[Fluechtling].[Antragsstatus], 
 	        12   [dbo].[hatEinen].[Thema]*/
 	      
 	        Object[] spaltenbeschriftung = {"PersonId", "Vorname", "Nachname", "Original Vorname", "Original Nachname", "Geschelcht", "Geburtsdatum", "Telefonnummer", "Handynummer", "E-Mail", "Antragsstatus", "Thema"};
 	      
-	        ResultSet rs = Functions.sachbearbeiterSuchtSeineFlüchtlinge(DatabaseConnector.connectToDatabase("DB_PR2015_02_01", "Test123!"), 3); 
+	        ResultSet rs = Functions.sachbearbeiterSuchtSeineFluechtlinge(DatabaseConnector.connectToDatabase("DB_PR2015_02_01", "Test123!"), 3); 
 	        String[][] FDaten = new String[20][12];
 	        int i =0;
 	        try {
@@ -76,7 +76,7 @@ public class MeineFlüchtlingeSehen_ScrollableJTable extends javax.swing.JFrame{
 	    }
 	
 	public static void main(String[] args) {
-		MeineFlüchtlingeSehen_ScrollableJTable test = new MeineFlüchtlingeSehen_ScrollableJTable();
+		MeineFluechtlingeSehen_ScrollableJTable test = new MeineFluechtlingeSehen_ScrollableJTable();
 
     }
 }

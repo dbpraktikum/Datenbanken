@@ -4,20 +4,20 @@ import java.sql.ResultSet;
 
 public class Functions {
 	
-	public static ResultSet sachbearbeiterSuchtSeineFlüchtlinge(Connection conn, int sid){
+	public static ResultSet sachbearbeiterSuchtSeineFluechtlinge(Connection conn, int sid){
 		String[] input = new String[1];
 		input[0] = ""+sid;
-		return ExecutionHelper.callFunction(conn, "SachbearbeiterSiehtAlleSeineFlüchtling",input);
+		return ExecutionHelper.callFunction(conn, "SachbearbeiterSiehtAlleSeineFluechtling",input);
 	}
 	
-	public static ResultSet sachbearbeiterSuchtSpezielleFlüchtlinge(Connection conn, int fid){
+	public static ResultSet sachbearbeiterSuchtSpezielleFluechtlinge(Connection conn, int fid){
 		String[] input = new String[1];
 		input[0] = ""+fid;
-		return ExecutionHelper.callFunction(conn, "SachbearbeiterSiehtSpeziellenFl�chtling",input);
+		return ExecutionHelper.callFunction(conn, "SachbearbeiterSiehtSpeziellenFluechtling",input);
 	}
 	
-	public static ResultSet alleBundeslünderSehen(Connection conn){
-		return ExecutionHelper.callFunction(conn, "AlleBundesl�nderSehen",null);
+	public static ResultSet alleBundeslaenderSehen(Connection conn){
+		return ExecutionHelper.callFunction(conn, "AlleBundeslaenderSehen",null);
 	}
 	
 	public static ResultSet angeboteSehenAndere(Connection conn, int gid){
@@ -39,6 +39,6 @@ public class Functions {
 	
 	
 	public static void main(String... args){
-		System.out.println(alleBundeslünderSehen(DatabaseConnector.connectToDatabase("DB_PR2015_02_01", "Test123!")));
+		System.out.println(alleBundeslaenderSehen(DatabaseConnector.connectToDatabase("DB_PR2015_02_01", "Test123!")));
 	}
 }

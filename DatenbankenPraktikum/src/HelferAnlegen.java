@@ -1,8 +1,11 @@
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
@@ -21,7 +24,7 @@ public class HelferAnlegen extends JFrame {       /*   @pid int,
 	   @Stadt nvarchar(20)*/
 	                                         
 	   
-	JLabel PId = new JLabel();
+	 
 	JLabel eMail = new JLabel();
 	JLabel vorname = new JLabel();
 	JLabel nachname = new JLabel();
@@ -32,8 +35,7 @@ public class HelferAnlegen extends JFrame {       /*   @pid int,
 	JLabel Straße = new JLabel();
 	JLabel PLZ = new JLabel();
 	JLabel Hausnummer = new JLabel();
-	JLabel AId = new JLabel();
-	JLabel Stadt = new JLabel();
+    JLabel Stadt = new JLabel();
 	 
 	
 	JTextField PId1 = new JTextField(null);
@@ -47,17 +49,18 @@ public class HelferAnlegen extends JFrame {       /*   @pid int,
 	JTextField Straße1 = new JTextField();
 	JTextField PLZ1 = new JTextField();
 	JTextField Hausnummer1 = new JTextField();
-	JTextField AId1 = new JTextField(null);
-	JTextField Stadt1 = new JTextField();
+    JTextField Stadt1 = new JTextField();
 	 
-
+	JButton save;
+	
    public HelferAnlegen(){
 	   super("Helfer Anlegen");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setLayout(new GridLayout(13,2));
-		this.setSize(400,400);
+		this.setLayout(new GridLayout(11,2));
+		this.setLocation(600,300);
+		this.setSize(2000, 2000);
 	   
-	  PId.setText("PId");
+ 
 	  eMail.setText("EMail");
 	  vorname.setText("Vorname");
 	  nachname.setText("Nachname");
@@ -68,14 +71,10 @@ public class HelferAnlegen extends JFrame {       /*   @pid int,
 	  Straße.setText("Straße");
 	  PLZ.setText("PLZ");
 	  Hausnummer.setText("Hausnummer");
-	  AId.setText("AId");
 	  Stadt.setText("Stadt");
 	  
 	  
-	  //this.getContentPane().add ( PId ) ;
-	  //this.getContentPane().add ( PId1 ) ;
-	 // this.getContentPane().add ( AId ) ;
-     // this.getContentPane().add ( AId1 ) ;
+	 
 	 
 	  this.getContentPane().add ( vorname ) ;
 	  this.getContentPane().add ( vorname1 ) ;
@@ -99,7 +98,32 @@ public class HelferAnlegen extends JFrame {       /*   @pid int,
 	  this.getContentPane().add ( Hausnummer1 ) ;
 	  this.getContentPane().add ( PLZ ) ;
 	  this.getContentPane().add ( PLZ1 ) ;
+	   
 	  
+	  save = new JButton("Helfer speichern");
+	  save.addActionListener(new ActionListener(){
+	         @Override
+	         public void actionPerformed(ActionEvent arg0) {
+	             // TODO Auto-generated method stub
+	              String email2 = eMail1.getText();
+	              String vorname2 =vorname1.getText();
+	              String nachname2 =nachname1.getText();
+	              String tel2 = tel1.getText();
+	              String handy2 =handy1.getText();
+	              int gemeinde2 =Integer.parseInt(gemeinde1.getText());
+	              String Adresse2 =adresse1.getText();
+	              String Stadt2 =Stadt1.getText();
+	              String Strasse2 =Straße1.getText();
+	              int PLZ2 =Integer.parseInt(PLZ1.getText());
+	              String Hausnummer2 =Hausnummer1.getText();
+	            
+	             
+	             	        
+	              StoredProcedure.anlegenHelfer(DatabaseConnector.connectToDatabase("DB_PR2015_02_01", "Test123!"), email2, vorname2, nachname2, tel2, handy2, gemeinde2, Adresse2,Strasse2, PLZ2, Hausnummer2, Stadt2 );
+	         }   
+	     });
+		 this.getContentPane().add(save);
+		  pack();
 	  
    }
    
