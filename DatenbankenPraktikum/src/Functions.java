@@ -121,33 +121,44 @@ public class Functions {
 		return ExecutionHelper.callFunction(conn, "KommentareUeberFluechtlingSehen",aid);
 	}
 	
+	public static ResultSet anzeigenKommentareUeberUnterkunft(Connection conn, int uid){
+		return ExecutionHelper.callFunction(conn, "KommentareUeberUnterkunftSehen",uid);
+	}
 	
+	public static ResultSet anzeigenKreiseImBundesland(Connection conn, String bundeslandName){
+		return ExecutionHelper.callFunction(conn, "KreisImBundeslandSehen",bundeslandName);
+	}
 	
+	public static ResultSet suchePersonMitNamen(Connection conn, String vorname, String nachname){
+		String[] input = new String[2];
+		input[0] = "'"+ vorname + "'";
+		input[1] = "'" + nachname + "'";
+		return ExecutionHelper.callFunction(conn, "NachNamenSuchen",input);
+	}
 	
+	public static ResultSet anzeigenOeffentlicheSpendenInGemeinde(Connection conn, int gid){
+		return ExecutionHelper.callFunction(conn, "OeffentlichSpendenSehen",gid);
+	}
 	
-	
-	
-	
-	
-	
-	public static ResultSet kreiseImBundesland(Connection conn, String bundeslandName){
-		String[] input = new String[1];
-		input[0] = "'"+ bundeslandName + "'";
-		return ExecutionHelper.callFunction(conn, "KreisImBundeslandSehen",input);
+	public static ResultSet anzeigenSachbearbeiter(Connection conn, int sid){
+		return ExecutionHelper.callFunction(conn, "SachbearbeiterPersoenlicheDaten",sid);
 	}
 	
 	public static ResultSet sachbearbeiterSuchtSeineFluechtlinge(Connection conn, int sid){
-		String[] input = new String[1];
-		input[0] = ""+sid;
-		return ExecutionHelper.callFunction(conn, "SachbearbeiterSiehtAlleSeineFluechtling",input);
+		return ExecutionHelper.callFunction(conn, "SachbearbeiterSiehtAlleSeineFluechtling",sid);
 	}
 	
 	public static ResultSet sucheFluechtlinge(Connection conn, int fid){
-		String[] input = new String[1];
-		input[0] = ""+fid;
-		return ExecutionHelper.callFunction(conn, "SachbearbeiterSiehtSpeziellenFluechtling",input);
+		return ExecutionHelper.callFunction(conn, "SachbearbeiterSiehtSpeziellenFluechtling",fid);
 	}
 	
+	public static ResultSet anzeigenSpendenInGemeinde(Connection conn, int gid){
+		return ExecutionHelper.callFunction(conn, "SpendenGemeinde",gid);
+	}
+	
+	public static ResultSet anzeigenUnterkuenfteInGemeinde(Connection conn, int gid){
+		return ExecutionHelper.callFunction(conn, "UnterkuenfteInGemeindeSehen",gid);
+	}
 	
 	public static void main(String... args){
 		System.out.println(alleBundeslaenderSehen(DatabaseConnector.connectToDatabase("DB_PR2015_02_01", "Test123!")));
