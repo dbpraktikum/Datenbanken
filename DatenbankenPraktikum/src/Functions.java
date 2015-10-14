@@ -35,6 +35,11 @@ public class Functions {
 		input[0] = "'"+ bundeslandName + "'";
 		return ExecutionHelper.callFunction(conn, "Angebotesehen_Sprachkurse",input);
 	}
+	public static ResultSet adresseEinerUnterkunft(Connection conn,int uid){
+		String[] input = new String[1];
+		input[0] = ""+ uid;
+		return ExecutionHelper.callFunction(conn, "AdresseUnterkunft",input);
+	}
 	
 	
 	

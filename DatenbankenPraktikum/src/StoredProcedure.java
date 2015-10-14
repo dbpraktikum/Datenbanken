@@ -100,7 +100,7 @@ public class StoredProcedure {
 	public static void anlegenHelfer(Connection conn, String email,
 			String vorname, String nachname, String tel, String handy,
 			int gemeinde, int adresse, String strasse, int plz,
-			String hausnummer, int aid, String stadt) {
+			String hausnummer, String stadt) {
 		
 		CallableStatement cstmt = ExecutionHelper.prepareCall(conn, "GesHelferAnlegen");
 		
