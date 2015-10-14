@@ -20,7 +20,7 @@ public class StoredProcedure {
 			String bezeichnung, String art, float lat, float lonG, float latr,
 			float longr, String staat, String stadt, String staatreg, String stadtreg) {
 		CallableStatement cstmt = ExecutionHelper.prepareCall(conn,
-				"GesFluechtlingAnlegen");
+				"GesFluechtlingAnlegen",34);
 
 		try {
 			cstmt.setString("eMail", email);
@@ -86,7 +86,7 @@ public class StoredProcedure {
 		input[8] = "'" + beschreibung + "'";
 
 		CallableStatement cstmt = ExecutionHelper.prepareCall(conn,
-				"GesAndereAnlegen");
+				"GesAndereAnlegen",0);
 	}
 
 	/*
@@ -98,7 +98,7 @@ public class StoredProcedure {
 			String hausnummer, String stadt) {
 
 		CallableStatement cstmt = ExecutionHelper.prepareCall(conn,
-				"GesHelferAnlegen");
+				"GesHelferAnlegen",11);
 
 		try {
 			cstmt.setString("eMail", email);
@@ -130,7 +130,7 @@ public class StoredProcedure {
 			String hausnummer, String stadt, String ebene) {
 
 		CallableStatement cstmt = ExecutionHelper.prepareCall(conn,
-				"GesSachbearbeiter");
+				"GesSachbearbeiter",12);
 
 		try {
 			cstmt.setString("eMail", email);
@@ -162,7 +162,7 @@ public class StoredProcedure {
 			String handy) {
 
 		CallableStatement cstmt = ExecutionHelper.prepareCall(conn,
-				"GesSpendenAnlegen");
+				"GesSpendenAnlegen",8);
 
 		try {
 			cstmt.setString("Name", name);
@@ -193,7 +193,7 @@ public class StoredProcedure {
 			String lesenivau, String beschreibung) {
 
 		CallableStatement cstmt = ExecutionHelper.prepareCall(conn,
-				"GesSprachkursAnlegen");
+				"GesSprachkursAnlegen",11);
 
 		try {
 			cstmt.setString("aTel", aTel);

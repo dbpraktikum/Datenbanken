@@ -27,10 +27,17 @@ public class ExecutionHelper {
 			e.printStackTrace();
 		}
 	}
-	public static CallableStatement prepareCall(Connection conn, String procedureName){
+	public static CallableStatement prepareCall(Connection conn, String procedureName, int numberOfParameter){
 		CallableStatement cstmt = null;
+		StringBuilder sql = new StringBuilder("{call " + procedureName + "(?");
+		for(int i = 0; i < numberOfParameter - 1; i++){
+			sql.append(",?");
+			System.out.println(i);
+		}
+		sql.append(")}");
 		try {
-			cstmt = conn.prepareCall("{call " + procedureName + "(?)}",ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
+			System.out.println(sql.toString());
+			cstmt = conn.prepareCall(sql.toString(),ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
