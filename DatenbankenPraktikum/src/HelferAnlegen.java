@@ -111,7 +111,7 @@ public class HelferAnlegen extends JFrame {       /*   @pid int,
 	              String tel2 = tel1.getText();
 	              String handy2 =handy1.getText();
 	              int gemeinde2 =Integer.parseInt(gemeinde1.getText());
-	              String Adresse2 =adresse1.getText();
+	              int Adresse2 =Integer.parseInt(adresse1.getText());
 	              String Stadt2 =Stadt1.getText();
 	              String Strasse2 =Straße1.getText();
 	              int PLZ2 =Integer.parseInt(PLZ1.getText());

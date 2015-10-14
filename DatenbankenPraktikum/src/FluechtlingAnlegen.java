@@ -1,6 +1,10 @@
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Date;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 import javax.swing.*;
 
@@ -159,6 +163,8 @@ public class FluechtlingAnlegen extends JFrame {
          @Override
          public void actionPerformed(ActionEvent arg0) {
              // TODO Auto-generated method stub
+        	 DateFormat df = new SimpleDateFormat("E MM dd kk:mm:ss z yyyy"); 
+        	 
               String email = eMail1.getText();
               String vorname2 =vorname1.getText();
               String nachname2 =nachname1.getText();
@@ -166,20 +172,48 @@ public class FluechtlingAnlegen extends JFrame {
               String handy2 =handy1.getText();
               String geschlecht2 =Geschlecht1.getText();
               String passExistiert2 =Pass1.getText();
-              String gebDatum2 =Geburtsdatum1.getText();
+              Date gebDatum2 = null;
+			try {
+				gebDatum2 = (java.sql.Date) df.parse(Geburtsdatum1.getText());
+			} catch (ParseException e2) {
+				// TODO Auto-generated catch block
+				e2.printStackTrace();
+			}
               String registriert2 =registriert1.getText();
-              String unterkunft2 =Unterkunft1.getText();
-              String einzugsdatum2 =Einzugsdatum1.getText();
+              int unterkunft2 =Integer.parseInt(Unterkunft1.getText());
+              
+              Date einzugsdatum2 = null;
+			try {
+				einzugsdatum2 = (java.sql.Date)df.parse(Einzugsdatum1.getText());
+			} catch (ParseException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
               String wunschland2 =Wunschland1.getText();
               String orginalNachname2 =OriginalNachname1.getText();
               String orginalVorname2 =OriginalVorname1.getText();
               String aufenthalt2 =Aufenhaltsland1.getText();
-              String gebdatValidiert2 =OriginalVorname1.getText();
+              String gebdatValidiert2 =OriginalVorname1.getText();    /* 	String email, String vorname, String nachname, String tel,
+		                                                               	String handy, String geschlecht, String passExistiert,
+		                                                                 	Date gebDatum, String registriert, int unterkunft,
+			                                                            Date einzugsdatum, String wunschland, String orginalNachname,
+			                                                             String orginalVorname, String aufenthalt, String gebdatValidiert,
+			                                                          String antragstatus, String kommtAus, int sid, String thema,
+			                                                           Date date, String sprache, String sprachniveau,
+			                                                            String schreibniveau, String leseniveau,
+			                                                              String bezeichnung, String art) {*/
               String antragstatus2 =OriginalVorname1.getText();
               String originalvorname2 =OriginalVorname1.getText();
               int sid2=3;
               String thema2 =Thema1.getText();
-              String date2 =Date1.getText();
+              
+              Date date2=null;
+			try {
+				date2 = (java.sql.Date)df.parse(Date1.getText());
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
               String sprache2 =Sprache1.getText();
               String sprachniveau2 =Sprachniveau1.getText();
               String schreibniveau2 =Schreibniveau1.getText();
@@ -189,7 +223,12 @@ public class FluechtlingAnlegen extends JFrame {
               String art2 =Art1.getText();
               String KommtAus2 =kommtAus1.getText();
         
-              StoredProcedure.anlegenFluechtling(DatabaseConnector.connectToDatabase("DB_PR2015_02_01", "Test123!"), email, vorname2, nachname2, tel2, handy2, geschlecht2, passExistiert2, gebDatum2, registriert2, unterkunft2, einzugsdatum2, wunschland2, orginalNachname2, orginalVorname2, aufenthalt2, gebdatValidiert2, antragstatus2, KommtAus2, sid2, thema2, date2, sprache2, sprachniveau2, schreibniveau2, lesenivau2, bezeichnung2, art2);
+              StoredProcedure.anlegenFluechtling(DatabaseConnector.connectToDatabase("DB_PR2015_02_01", "Test123!"), email, vorname2, nachname2,
+            		  tel2, handy2, geschlecht2, passExistiert2, gebDatum2, registriert2, unterkunft2, einzugsdatum2, wunschland2, 
+            		  orginalNachname2,
+            		  orginalVorname2, aufenthalt2, gebdatValidiert2, antragstatus2, KommtAus2, sid2, thema2, date2, sprache2, 
+            		  sprachniveau2, schreibniveau2,
+            		  lesenivau2, bezeichnung2, art2);
          }   
      });
 	 this.getContentPane().add(save);
