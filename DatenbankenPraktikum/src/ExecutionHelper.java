@@ -1,3 +1,4 @@
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -25,6 +26,17 @@ public class ExecutionHelper {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	public static CallableStatement prepareCall(Connection conn, String procedureName){
+		CallableStatement cstmt = null;
+		try {
+			cstmt = conn.prepareCall("{call " + procedureName + "(?)}",ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return cstmt;
 	}
 	public static String[] loginDatabase(Connection conn, String userId, String passwort, String rolle){
 		String[] loginData = new String[3];
