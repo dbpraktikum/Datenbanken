@@ -79,4 +79,17 @@ public class ExecutionHelper {
 		}		
 		return rs;
 	}
+	
+	public static ResultSet callFunction(Connection conn, String functionName, int value){
+		String[] input = new String[1];
+		input[0] = ""+ value;
+		return ExecutionHelper.callFunction(conn, functionName,input);
+	}
+	
+	public static ResultSet callFunction(Connection conn, String functionName, String value){
+		String[] input = new String[1];
+		input[0] = "'"+ value + "'";
+		return ExecutionHelper.callFunction(conn, functionName,input);
+	}
+	
 }
