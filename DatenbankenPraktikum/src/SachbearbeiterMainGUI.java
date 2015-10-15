@@ -78,7 +78,7 @@ public class SachbearbeiterMainGUI extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-			
+				new SpendenAnlegen(databaseUsername,databasePassword);
 			}
 			
 		});
