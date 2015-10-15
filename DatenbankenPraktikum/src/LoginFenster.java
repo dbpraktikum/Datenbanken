@@ -1,5 +1,3 @@
-package Merge;
-
 import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -72,6 +70,7 @@ public class LoginFenster extends javax.swing.JFrame{
 		this.add(leer);
 		this.add(login);
 		this.pack();
+		this.setSize(275, 150);
 		this.setLocationRelativeTo(null);
 		this.setVisible(true);
 	}

@@ -1,8 +1,3 @@
-package Merge;
-
-	
-
- 
 import java.awt.BorderLayout;
 
  

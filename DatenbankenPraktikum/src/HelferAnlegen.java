@@ -1,4 +1,3 @@
-package Merge;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -8,7 +7,6 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.*;
 
 public class HelferAnlegen extends JFrame {       /*   @pid int,
 	   @eMail nvarchar(30),

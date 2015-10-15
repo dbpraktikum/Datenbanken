@@ -128,6 +128,7 @@ public class MainWindow extends JFrame {
 		Loginanwendung login = new Loginanwendung();
 		String rolle = (String)combobox_rolle.getSelectedItem();
 		String[] loginData = login.login(this.textfield_username.getText(), textfield_password.getText(), (String) combobox_rolle.getSelectedItem());
+		System.out.println(textfield_password.getText());
 		if(loginData[0] == null){
 			loginFailed.setVisible(true);
 		}else{

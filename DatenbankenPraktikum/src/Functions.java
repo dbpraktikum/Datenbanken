@@ -1,4 +1,3 @@
-package Merge;
 import java.sql.Connection;
 import java.sql.ResultSet;
 
@@ -149,7 +148,8 @@ public class Functions {
 		return ExecutionHelper.callFunction(conn, "SachbearbeiterSiehtAlleSeineFluechtling",sid);
 	}
 	
-	public static ResultSet sucheFluechtlinge(Connection conn, int fid){
+	public static ResultSet sachbearbeiterSuchtSpezielleFluechtlinge(
+			Connection conn, int fid) {
 		return ExecutionHelper.callFunction(conn, "SachbearbeiterSiehtSpeziellenFluechtling",fid);
 	}
 	
@@ -212,4 +212,5 @@ public class Functions {
 	public static void main(String... args){
 		System.out.println(alleBundeslaenderSehen(DatabaseConnector.connectToDatabase("DB_PR2015_02_01", "Test123!")));
 	}
+
 }
