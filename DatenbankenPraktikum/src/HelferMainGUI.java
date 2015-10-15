@@ -60,7 +60,12 @@ public class HelferMainGUI extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				System.out.println("Vorsteher von den Unterkuenften, in denen der Helfer hilft anzeigen");
+				try {
+					new VorsteherVonHelfer(id, databaseUsername, databasePassword);
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 			
 		});
@@ -96,6 +101,8 @@ public class HelferMainGUI extends JFrame{
 		buttonGroup.add(AlleAngeboteSehen);
 		buttonGroup.add(EigeneAngeboteSehen);
 		buttonGroup.add(VorsteherDerUnterkuenfteSehen);
+		buttonGroup.add(BundeslaenderSehen);
+		
 
 		getContentPane().add(BorderLayout.CENTER, buttonGroup);
 		

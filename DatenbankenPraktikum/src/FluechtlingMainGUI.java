@@ -14,7 +14,9 @@ public class FluechtlingMainGUI extends JFrame{
 	private String databasePassword;
 	
 	private JButton BundeslaenderSehen;
-
+	
+	private JButton AngeboteAnzeigen;
+	
 	private JLabel Ueberschrift;
 	
 	private JPanel buttonGroup;
@@ -30,7 +32,7 @@ public class FluechtlingMainGUI extends JFrame{
 
 		id = idx;
 		BundeslaenderSehen = new JButton("Bundeslaender Anzeigen");
-		
+		AngeboteAnzeigen = new JButton("Angebote Anzeigen");
 		
 		BundeslaenderSehen.addActionListener(new ActionListener(){
 
@@ -41,7 +43,21 @@ public class FluechtlingMainGUI extends JFrame{
 					new Bundesland_ScrollableJTable(databaseUsername,databasePassword);
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
-					System.out.println("Klasse: SacharbeiterMainGUI - AngeboteAnzeigen()");
+					e1.printStackTrace();
+				}
+			}
+			
+		});
+		
+		this.AngeboteAnzeigen.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				try {
+					new AngeboteAnzeigen(databaseUsername, databasePassword);
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}
@@ -60,6 +76,7 @@ public class FluechtlingMainGUI extends JFrame{
 		
 		buttonGroup = new JPanel(new GridLayout(5,1));
 		
+		buttonGroup.add(AngeboteAnzeigen);
 		buttonGroup.add(BundeslaenderSehen);
 
 		getContentPane().add(BorderLayout.CENTER, buttonGroup);

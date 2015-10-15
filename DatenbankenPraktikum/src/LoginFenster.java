@@ -23,7 +23,7 @@ public class LoginFenster extends javax.swing.JFrame{
 		JLabel leer = new JLabel();
 		JTextField benutzer = new JTextField("");
 		JPasswordField pass = new JPasswordField("");
-		String[] auswahl = {"Fluechtling", "Helfer", "Sachbearbeiter"};
+		String[] auswahl = {"Flüchtling", "Helfer", "Sachbearbeiter"};
 		JComboBox<String> auswahlComboBox = new JComboBox<String>(auswahl);
 		auswahlComboBox.setSelectedIndex(2);
 		JButton login = new JButton("Login");

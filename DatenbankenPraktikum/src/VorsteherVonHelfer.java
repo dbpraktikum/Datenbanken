@@ -10,18 +10,18 @@ import javax.swing.JTable;
 
 
 
-public class UnterkunftInGemeinde_ScrollableJTable extends javax.swing.JFrame{	
+public class VorsteherVonHelfer extends javax.swing.JFrame{	
 	
-	public UnterkunftInGemeinde_ScrollableJTable(String gemeindeId, String gemeindeName, String databaseUsername, String databasePassword) throws SQLException{
+	public VorsteherVonHelfer(int helferId, String databaseUsername, String databasePassword) throws SQLException{
 		this.setDefaultCloseOperation(HIDE_ON_CLOSE);
-        this.setTitle("Unterkuenfte in der Gemeinde " + gemeindeName);
+        this.setTitle("Vorsteher");
         
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new BorderLayout());
         mainPanel.setPreferredSize(new Dimension(1000, 400));
         
         int n = 0;
-        ResultSet testLaenge = Functions.unterkuenfteInGemeinde(DatabaseConnector.connectToDatabase(databaseUsername, databasePassword), gemeindeId);
+        ResultSet testLaenge = Functions.anzeigenVorsteherVonHelfer(DatabaseConnector.connectToDatabase(databaseUsername, databasePassword), helferId);
         
         while(testLaenge.next()){
 			n++;
@@ -32,23 +32,20 @@ public class UnterkunftInGemeinde_ScrollableJTable extends javax.swing.JFrame{
          * UId, Straﬂe, Hausnummer, PLZ, Stadt, Kapazit‰t, Anzahl-F, Vorname Vorsteher, Nachname Vorsteher, Tel, Handy, eMail
          */
         
-        String[] spaltenbeschriftung = {"UId", "PLZ", "Stadt", "Straﬂe", "Hausnummer", "Kapazitaet", "Anzahl Fluechtlinge", "Vorsteher - Vorname", "Vorsteher - Nachname"};
+        String[] spaltenbeschriftung = {"UId", "Vorname", "Nachname", "Telefonnummer", "Handynummer", "Email"};
         
         String[][] GDaten = new String[n][spaltenbeschriftung.length];
         
-        ResultSet rs = Functions.unterkuenfteInGemeinde(DatabaseConnector.connectToDatabase(databaseUsername, databasePassword), gemeindeId);
+        ResultSet rs = Functions.anzeigenVorsteherVonHelfer(DatabaseConnector.connectToDatabase(databaseUsername, databasePassword), helferId);
         
         int index = 0;
 		while (rs.next()) {
 			GDaten[index][0] = rs.getString(1);
-			GDaten[index][1] = rs.getString(4);
-			GDaten[index][2] = rs.getString(5);
-			GDaten[index][3] = rs.getString(2);
-			GDaten[index][4] = rs.getString(3);
+			GDaten[index][1] = rs.getString(2);
+			GDaten[index][2] = rs.getString(3);
+			GDaten[index][3] = rs.getString(4);
+			GDaten[index][4] = rs.getString(5);
 			GDaten[index][5] = rs.getString(6);
-			GDaten[index][6] = rs.getString(7);
-			GDaten[index][7] = rs.getString(8);
-			GDaten[index][8] = rs.getString(9);
 			index++;
 		}
         
