@@ -13,35 +13,46 @@ import javax.swing.JTable;
 
 
 
-public class Gemeinde_ScrollableJTable_Sachbearbeiter extends javax.swing.JFrame{	
+public class UnterkunftInGemeinde_ScrollableJTable_Sachbearbeiter extends javax.swing.JFrame{	
 	
-	public Gemeinde_ScrollableJTable_Sachbearbeiter(String kreis, String databaseUsername, String databasePassword) throws SQLException{
+	public UnterkunftInGemeinde_ScrollableJTable_Sachbearbeiter(String gemeindeId, String gemeindeName, String databaseUsername, String databasePassword) throws SQLException{
 		this.setDefaultCloseOperation(HIDE_ON_CLOSE);
-        this.setTitle("Gemeinden im Kreis " + kreis);
+        this.setTitle("Unterkuenfte in der Gemeinde " + gemeindeName);
         
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new BorderLayout());
         mainPanel.setPreferredSize(new Dimension(1000, 400));
         
         int n = 0;
-        ResultSet testLaenge = Functions.gemeindenImKreis(DatabaseConnector.connectToDatabase(databaseUsername, databasePassword), kreis);
+        ResultSet testLaenge = Functions.unterkuenfteInGemeinde(DatabaseConnector.connectToDatabase(databaseUsername, databasePassword), gemeindeId);
         
         while(testLaenge.next()){
 			n++;
 		}
 
-        String[] spaltenbeschriftung = {"GId", "Name", "Einwohner", "Geodaten"};
         
-        String[][] GDaten = new String[n][4];
+        /*
+         * UId, Straﬂe, Hausnummer, PLZ, Stadt, Kapazit‰t, Anzahl-F, Vorname Vorsteher, Nachname Vorsteher, Tel, Handy, eMail
+         */
         
-        ResultSet rs = Functions.gemeindenImKreis(DatabaseConnector.connectToDatabase(databaseUsername, databasePassword), kreis);
+        String[] spaltenbeschriftung = {"UId", "PLZ", "Stadt", "Straﬂe", "Hausnummer", "Kapazitaet", "Anzahl Fluechtlinge", "Vorsteher - Vorname", "Vorsteher - Nachname"};
+        
+        String[][] GDaten = new String[n][spaltenbeschriftung.length];
+        
+        ResultSet rs = Functions.unterkuenfteInGemeinde(DatabaseConnector.connectToDatabase(databaseUsername, databasePassword), gemeindeId);
         
         int index = 0;
 		while (rs.next()) {
+			System.out.println("Unterkunft: " + rs.getString(1));
 			GDaten[index][0] = rs.getString(1);
-			GDaten[index][1] = rs.getString(2);
-			GDaten[index][2] = rs.getString(3);
-			GDaten[index][3] = rs.getString(4);
+			GDaten[index][1] = rs.getString(4);
+			GDaten[index][2] = rs.getString(5);
+			GDaten[index][3] = rs.getString(2);
+			GDaten[index][4] = rs.getString(3);
+			GDaten[index][5] = rs.getString(6);
+			GDaten[index][6] = rs.getString(7);
+			GDaten[index][7] = rs.getString(8);
+			GDaten[index][8] = rs.getString(9);
 			index++;
 		}
         
@@ -53,26 +64,17 @@ public class Gemeinde_ScrollableJTable_Sachbearbeiter extends javax.swing.JFrame
         JScrollPane pane = new JScrollPane(table);
         mainPanel.add(pane, BorderLayout.CENTER);
         
-               
+         
         table.addMouseListener(new MouseListener(){
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(e.getButton() == 1){
-				try {
-					new UnterkunftInGemeinde_ScrollableJTable_Sachbearbeiter("" + table.getValueAt(table.rowAtPoint(e.getPoint()),0), "" + table.getValueAt(table.rowAtPoint(e.getPoint()),1), databaseUsername, databasePassword);
-				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					System.out.println("Klasse: Gemeinde_ScrollableJTable - UnterkunftInGemeinde_ScrollableJTable()");
-					e1.printStackTrace();
-				}
-				}
 				if(e.getButton() == 3){
 					try {
-						new FluechtlingeInGemeinde_ScrollableJTable("" + table.getValueAt(table.rowAtPoint(e.getPoint()),0), "" + table.getValueAt(table.rowAtPoint(e.getPoint()),1), databaseUsername, databasePassword);
+						new FluechtlingeInUnterkunft_ScrollableJTable(Integer.parseInt("" + table.getValueAt(table.rowAtPoint(e.getPoint()),0)), databaseUsername, databasePassword);
 					} catch (SQLException e1) {
 						// TODO Auto-generated catch block
-						System.out.println("Klasse: Gemeinde_ScrollableJTable - FluechtlingeInGemeinde_ScrollableJTable()");
+						System.out.println("Klasse: UnterkunftInGemeinde_ScrollableJTable_Sachbearbeiter - FluechtlingeInGemeinde_ScrollableJTable()");
 						e1.printStackTrace();
 					}
 				}
@@ -102,12 +104,10 @@ public class Gemeinde_ScrollableJTable_Sachbearbeiter extends javax.swing.JFrame
         
         
         
-        
-        
         this.setContentPane(mainPanel);
         this.pack();
         this.setLocationRelativeTo(null);
         this.setVisible(true);
 	}
-
+	
 }
