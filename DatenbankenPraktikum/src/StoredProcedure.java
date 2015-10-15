@@ -133,21 +133,27 @@ public class StoredProcedure {
 	/*
 	 * Methode zum Anlegen von Sacharbeitern.
 	 */
-	public static void anlegenSacharbeiter(Connection conn, String email,
+	public static void anlegenSacharbeiter(Connection conn, String eMail,
 			String vorname, String nachname, String tel, String handy,
 			int gemeinde, String aktiv, String strasse, int plz,
-			String hausnummer, String stadt, String ebene) {
+			String hausnummer, String stadt, String ebene, String kreis, String bundesland) {
 
 		CallableStatement cstmt = ExecutionHelper.prepareCall(conn,
 				"GesSachbearbeiter",12);
 
+		if(gemeinde == 0) {gemeinde = (Integer) null;}
+		if(kreis == "") {kreis = null;}
+		if(bundesland == "") {bundesland = null;}
 		try {
-			cstmt.setString("eMail", email);
+			
+			cstmt.setString("eMail", eMail);
 			cstmt.setString("Vorname", vorname);
 			cstmt.setString("Nachname", nachname);
 			cstmt.setString("Tel", tel);
 			cstmt.setString("Handy", handy);
 			cstmt.setInt("GId", gemeinde);
+			cstmt.setString("kreis_name", kreis);
+			cstmt.setString("Name", bundesland);
 			cstmt.setString("aktiv", aktiv);
 			cstmt.setString("Strasse", strasse);
 			cstmt.setInt("PLZ", plz);
@@ -167,7 +173,7 @@ public class StoredProcedure {
 	 * Methode zum Anlegen von Spenden.
 	 */
 	  public static void anlegenSpenden(Connection conn, String name, int anzahl,
-	            int gid, String email, String vorname, String nachname, String tel,
+	            int gid, String eMail, String vorname, String nachname, String tel,
 	            String handy) {
 	 
 	        CallableStatement cstmt = ExecutionHelper.prepareCall(conn,
@@ -177,7 +183,7 @@ public class StoredProcedure {
 	            cstmt.setString("Name", name);
 	            cstmt.setInt("Anzahl", anzahl);
 	            cstmt.setInt("GId", gid);
-	            cstmt.setString("eMail", email);
+	            cstmt.setString("eMail", eMail);
 	            cstmt.setString("Vorname", vorname);
 	            cstmt.setString("Nachname", nachname);
 	            cstmt.setString("Tel", tel);
@@ -224,5 +230,42 @@ public class StoredProcedure {
 			e.printStackTrace();
 		}
 	}
+	
+	public static void updateFluechtling(Connection conn,int PId ,String email,
+            String vorname, String nachname, String tel, String handy,
+            String geschlecht, String passExistiert, String gebDatum, 
+              int unterkunft, String einzugsdatum,
+            String wunschland, String originalNachname, String originalVorname,
+            String aufenthalt, String gebdatValidiert, String antragstatus ) {
+		CallableStatement cstmt = ExecutionHelper.prepareCall(conn,
+				"GesFluechtlingUpdaten",17);
 
+		try {
+			cstmt.setInt("PId", PId);
+			cstmt.setString("eMail", email);
+			cstmt.setString("Vorname",vorname );
+			cstmt.setString("Nachname", nachname);
+			cstmt.setString("Tel", tel);
+			cstmt.setString("Handy", handy);
+			cstmt.setString("Geschlecht", geschlecht);
+			cstmt.setString("Pass", passExistiert);
+			cstmt.setString("Geburtsdatum", gebDatum);
+			cstmt.setInt("Unterkunft", unterkunft);
+			cstmt.setString("Einzugsdatum", einzugsdatum );
+			cstmt.setString("Wunschland", wunschland);
+		
+			cstmt.setString("OriginalNachname",originalNachname);
+			cstmt.setString("OriginalVorname", originalVorname );
+			cstmt.setString("Aufenthaltsland", aufenthalt);
+			cstmt.setString("GeburtsdatumV",gebdatValidiert );
+			cstmt.setString("Antragsstatus", antragstatus);
+			 
+
+			cstmt.execute();
+
+	}catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	}
 }

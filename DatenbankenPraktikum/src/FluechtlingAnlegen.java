@@ -272,6 +272,7 @@ public class FluechtlingAnlegen extends JFrame {
      });
 	 this.getContentPane().add(save);
 	  pack();
+	  this.setVisible(true);
    }
    /* String email,
 	            String vorname, String nachname, String tel, String handy,

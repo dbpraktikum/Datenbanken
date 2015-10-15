@@ -10,7 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 
-public class Fl�chtlingBearbeiten extends JFrame {
+public class FluechtlingBearbeiten extends JFrame {
 
 	 JLabel eMail = new JLabel();
 	    JLabel Vorname = new JLabel();
@@ -20,7 +20,7 @@ public class Fl�chtlingBearbeiten extends JFrame {
 	    JLabel Geschlecht = new JLabel();
 	    JLabel Pass = new JLabel();
 	    JLabel Geburtsdatum = new JLabel();
-	    JLabel registriert = new JLabel();
+	    
 	    JLabel Unterkunft = new JLabel();
 	    JLabel Einzugsdatum = new JLabel();
 	    JLabel Wunschland = new JLabel();
@@ -29,17 +29,9 @@ public class Fl�chtlingBearbeiten extends JFrame {
 	    JLabel Aufenhaltsland = new JLabel();
 	    JLabel GeburtsdatumV = new JLabel();
 	    JLabel Antragsstatus = new JLabel();
-	    JLabel kommtAus = new JLabel();
-	    JLabel Thema = new JLabel();
-	    JLabel Date = new JLabel();
-	    JLabel Sprache = new JLabel();
-	    JLabel Sprachniveau = new JLabel();
-	    JLabel Schreibniveau = new JLabel();
-	    JLabel Leseniveau = new JLabel();
 	     
-	    JLabel Bezeichnung = new JLabel();
-	    JLabel Art = new JLabel();
-	     
+	    
+	    JLabel PId=new JLabel();
 	     
 	    JTextField eMail1 = new JTextField();
 	    JTextField vorname1 = new JTextField();
@@ -49,7 +41,7 @@ public class Fl�chtlingBearbeiten extends JFrame {
 	    JTextField Geschlecht1 = new JTextField();
 	    JTextField Pass1 = new JTextField();
 	    JTextField Geburtsdatum1 = new JTextField();
-	    JTextField registriert1 = new JTextField();
+	    
 	    JTextField Unterkunft1 = new JTextField();
 	    JTextField Einzugsdatum1 = new JTextField();
 	    JTextField Wunschland1 = new JTextField();
@@ -58,15 +50,7 @@ public class Fl�chtlingBearbeiten extends JFrame {
 	    JTextField Aufenhaltsland1 = new JTextField();
 	    JTextField GeburtsdatumV1 = new JTextField();
 	    JTextField Antragsstatus1 = new JTextField();
-	    JTextField kommtAus1 = new JTextField();
-	    JTextField Thema1 = new JTextField();
-	    JTextField Date1 = new JTextField();
-	    JTextField Sprache1 = new JTextField();
-	    JTextField Sprachniveau1 = new JTextField();
-	    JTextField Schreibniveau1 = new JTextField();
-	    JTextField Leseniveau1 = new JTextField();
-	    JTextField Bezeichnung1 = new JTextField();
-	    JTextField Art1 = new JTextField();
+	    JTextField PId1 =new JTextField();
 	     
 	    JButton speichern;
 	    public FluechtlingBearbeiten (int fid) throws SQLException{
@@ -76,7 +60,7 @@ public class Fl�chtlingBearbeiten extends JFrame {
 	        this.setLocation(600,300);
 	        this.setSize(2000, 2000);
 	         
-	        
+	  
 	      eMail.setText("E-Mail");
 	      Vorname.setText("Vorname");
 	      Nachname.setText("Nachname");
@@ -86,7 +70,7 @@ public class Fl�chtlingBearbeiten extends JFrame {
 	      Geschlecht.setText("Geschlecht");
 	      Pass.setText("Pass");
 	      Geburtsdatum.setText("Geburtsdatum");
-	      registriert.setText("registriert");
+	   
 	      Unterkunft.setText("Unterkunft");
 	      Einzugsdatum.setText("Einzugsdatum");
 	      Wunschland.setText("Wuschland");
@@ -95,11 +79,11 @@ public class Fl�chtlingBearbeiten extends JFrame {
 	      Aufenhaltsland.setText("Aufenhaltsland");  
 	      GeburtsdatumV.setText("GeburtsdaumV");
 	      Antragsstatus.setText("Antragsstatus");
-	      kommtAus.setText("kommtAus");
+	     PId.setText("Person Id");
 	 
 	       
 	 
-	      ResultSet rs = Functions.sucheFluechtlinge(DatabaseConnector.connectToDatabase("DB_PR2015_02_01", "Test123!"), fid); 
+	      ResultSet rs = Functions.anzeigenFluechtling(DatabaseConnector.connectToDatabase("DB_PR2015_02_01", "Test123!"), fid); 
 	      String[][] FDaten = new String[2][20];
 	 
 	       
@@ -124,8 +108,6 @@ public class Fl�chtlingBearbeiten extends JFrame {
 	                FDaten[1][14] = rs.getString(15);
 	                FDaten[1][15] = rs.getString(16);
 	                FDaten[1][16] = rs.getString(17);
-	                FDaten[1][17] = rs.getString(18);
-	                FDaten[1][18] = rs.getString(19);
 	                 
 	                 
 	                 
@@ -138,29 +120,30 @@ public class Fl�chtlingBearbeiten extends JFrame {
 	       
 	       
 	       
-	      eMail1.setText(FDaten[1][4]);
+	      eMail1.setText(FDaten[1][8]);
 	      vorname1.setText(FDaten[1][0]);
 	      nachname1.setText(FDaten[1][1]);
-	      tel1.setText(FDaten[1][2]);
-	      handy1.setText(FDaten[1][3]);
-	      Geschlecht1.setText(FDaten[1][7]);
+	      tel1.setText(FDaten[1][6]);
+	      handy1.setText(FDaten[1][7]);
+	      Geschlecht1.setText(FDaten[1][4]);
 	      Pass1.setText(FDaten[1][15]);
-	      Geburtsdatum1.setText(FDaten[1][8]);
-	      registriert1.setText(FDaten[1][18]);
-	      Unterkunft1.setText(FDaten[1][12]);
-	      Einzugsdatum1.setText(FDaten[1][13]);
+	      Geburtsdatum1.setText(FDaten[1][5]);
+
+	      Unterkunft1.setText(FDaten[1][14]);
+	      Einzugsdatum1.setText(FDaten[1][16]);
 	      Wunschland1.setText(FDaten[1][11]);
-	      OriginalNachname1.setText(FDaten[1][6]);
-	      OriginalVorname1.setText(FDaten[1][5]);
+	      OriginalNachname1.setText(FDaten[1][3]);
+	      OriginalVorname1.setText(FDaten[1][2]);
 	      Aufenhaltsland1.setText(FDaten[1][10]);  
-	      GeburtsdatumV1.setText(FDaten[1][14]);
+	      GeburtsdatumV1.setText(FDaten[1][13]);
 	      Antragsstatus1.setText(FDaten[1][9]);
-	      kommtAus1.setText(FDaten[1][16]);
+	     
 	       
 	       
 	       
 	      speichern = new JButton("Daten speichern");
-	       
+	      
+	    
 	      this.getContentPane().add ( eMail ) ;
 	      this.getContentPane().add ( eMail1 ) ;
 	      this.getContentPane().add ( Vorname ) ;
@@ -175,8 +158,7 @@ public class Fl�chtlingBearbeiten extends JFrame {
 	      this.getContentPane().add ( Pass1 ) ;
 	      this.getContentPane().add ( Geburtsdatum ) ;
 	      this.getContentPane().add ( Geburtsdatum1 ) ;
-	      this.getContentPane().add ( registriert ) ;
-	      this.getContentPane().add ( registriert1 ) ;
+
 	      this.getContentPane().add ( Unterkunft ) ;
 	      this.getContentPane().add ( Unterkunft1 ) ;
 	      this.getContentPane().add ( Einzugsdatum ) ;
@@ -193,25 +175,7 @@ public class Fl�chtlingBearbeiten extends JFrame {
 	      this.getContentPane().add ( GeburtsdatumV1 ) ;
 	      this.getContentPane().add ( Antragsstatus ) ;
 	      this.getContentPane().add ( Antragsstatus1 ) ;
-	      this.getContentPane().add ( kommtAus ) ;
-	      this.getContentPane().add ( kommtAus1 ) ;
-	      this.getContentPane().add (Thema  ) ;
-	      this.getContentPane().add ( Thema1 ) ;
-	      this.getContentPane().add (Date  ) ;
-	      this.getContentPane().add ( Date1 ) ;
-	      this.getContentPane().add ( Sprache  ) ;
-	      this.getContentPane().add ( Sprache1 ) ;
-	      this.getContentPane().add ( Sprachniveau ) ;
-	      this.getContentPane().add ( Sprachniveau1 ) ;
-	      this.getContentPane().add ( Schreibniveau ) ;
-	      this.getContentPane().add ( Schreibniveau1 ) ;
-	      this.getContentPane().add ( Leseniveau ) ;
-	      this.getContentPane().add ( Leseniveau1 ) ;
 	 
-	      this.getContentPane().add ( Bezeichnung) ;
-	      this.getContentPane().add ( Bezeichnung1) ;
-	      this.getContentPane().add ( Art) ;
-	      this.getContentPane().add (Art1) ;
 	      this.getContentPane().add(speichern);
 	       
 	      speichern.addActionListener(new ActionListener(){
@@ -225,9 +189,10 @@ public class Fl�chtlingBearbeiten extends JFrame {
 	              String tel2 = tel1.getText();
 	              String handy2 =handy1.getText();
 	              String geschlecht2 =Geschlecht1.getText();
+	              
 	              String pass2 =Pass1.getText();
 	              String gebDatum2 =Geburtsdatum1.getText();
-	              int registriert2 =Integer.parseInt(registriert1.getText());
+	           
 	              int unterkunft2 =Integer.parseInt(Unterkunft1.getText());
 	              String einzugsdatum2 =Einzugsdatum1.getText();
 	              String wunschland2 =Wunschland1.getText();
@@ -238,13 +203,9 @@ public class Fl�chtlingBearbeiten extends JFrame {
 	              String antragstatus2 =OriginalVorname1.getText();
 	              String originalvorname2 =OriginalVorname1.getText();
 	              
-	              int KommtAus2 =Integer.parseInt(kommtAus1.getText());
+	      
 	           
-	          /*
-	           * hier muss noch der richtige Befehl him damit updateFlüchtling 
-	           * aufgerufen wird. Variablen die übergegeben werden sollten schon stimmen
-	           */
-	           //   StoredProcedure.updateGesFluechtling(DatabaseConnector.connectToDatabase("DB_PR2015_02_01", "Test123!"), fid, email, vorname2, nachname2, tel2, handy2, geschlecht2, pass2, gebDatum2, registriert2, unterkunft2, einzugsdatum2, wunschland2, orginalNachname2, orginalVorname2, aufenthalt2, gebdatValidiert2, antragstatus2, KommtAus2);
+	            StoredProcedure.updateFluechtling(DatabaseConnector.connectToDatabase("DB_PR2015_02_01", "Test123!"), fid, email, vorname2, nachname2, tel2, handy2, geschlecht2, pass2, gebDatum2, unterkunft2, einzugsdatum2, wunschland2, orginalNachname2, orginalVorname2, aufenthalt2, gebdatValidiert2, antragstatus2);
 	          }
 	            
 	      });

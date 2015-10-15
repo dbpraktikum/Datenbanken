@@ -16,6 +16,7 @@ public class SachbearbeiterMainGUI extends JFrame{
 	private JButton BundeslaenderSehen;
 	private JButton AngeboteAnzeigen;
 
+	private JButton SpendeAnlegen;
 	private JLabel Ueberschrift;
 	
 	private JPanel buttonGroup;
@@ -24,15 +25,17 @@ public class SachbearbeiterMainGUI extends JFrame{
 		super("Sachbearbeiter");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+		
+		this.setSize(1500,6000);
 		this.setLayout(new BorderLayout(0,5));
-
-		FluechtlingAnlegen = new JButton("Neuen Fluechtling Anlegen");
+		FluechtlingAnlegen = new JButton("Neuen Füchtling Anlegen");
 		HelferAnlegen = new JButton("Neuen Helfer Anlegen");
 		SachbearbeiterAnlegen = new JButton("Neuen Sachbearbeiter Anlegen");
-		UnterkunftAnlegen = new JButton("Neue Unterkunft Anlegen");
-		MeineFluechtlingeSehen = new JButton("Meine Fluechtlinge Sehen");
+		UnterkunftAnlegen = new JButton("Neue Unterkunft Anlegen ");
+		MeineFluechtlingeSehen = new JButton("Flüechtlinge Anzeigen");
 		BundeslaenderSehen = new JButton("Bundeslaender Anzeigen");
 		AngeboteAnzeigen = new JButton("Angebote Anzeigen");
+		SpendeAnlegen = new JButton("Spende Anlegen ");
 		
 
 		// Listener fuer Buttons
@@ -56,7 +59,7 @@ public class SachbearbeiterMainGUI extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("Sachbearbeiter Anlegen"); 
+			 
 				new SachbearbeiterAnlegen();
 			}
 			
@@ -70,22 +73,26 @@ public class SachbearbeiterMainGUI extends JFrame{
 			}
 			
 		});
-		MeineFluechtlingeSehen.addActionListener(new ActionListener(){
+		SpendeAnlegen.addActionListener(new ActionListener(){
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				try {
-					new MeineFluechtlingeSehen_ScrollableJTable();
-				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					System.out.println("Klasse: SacharbeiterMainGUI - MeineFluechtlingeSehen_ScrollableJTable()");
-					e1.printStackTrace();
-				}
-				
+			
 			}
 			
 		});
+		MeineFluechtlingeSehen.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				new MeineFluechtlingeSehen_ScrollableJTable();
+			}
+			
+			}
+			
+		);
 		
 		BundeslaenderSehen.addActionListener(new ActionListener(){
 
@@ -128,21 +135,25 @@ public class SachbearbeiterMainGUI extends JFrame{
 
 		getContentPane().add(BorderLayout.PAGE_START, Ueberschrift);
 		
-		
-		buttonGroup = new JPanel(new GridLayout(6,1));
-		
-		buttonGroup.add(HelferAnlegen);
-		buttonGroup.add(SachbearbeiterAnlegen);
-		buttonGroup.add(UnterkunftAnlegen);
-		buttonGroup.add(MeineFluechtlingeSehen);
-		buttonGroup.add(BundeslaenderSehen);
-		buttonGroup.add(AngeboteAnzeigen);
+	
+		JPanel buttonGroupA = new JPanel(new GridLayout(6,1));
+		JPanel buttonGroupB = new JPanel(new GridLayout(6,1));
+		buttonGroupA.add(FluechtlingAnlegen);
+		buttonGroupA.add(HelferAnlegen);
+		buttonGroupA.add(SachbearbeiterAnlegen);
+		buttonGroupA.add(UnterkunftAnlegen);
+		buttonGroupA.add(SpendeAnlegen);
+		buttonGroupB.add(MeineFluechtlingeSehen);
+		buttonGroupB.add(BundeslaenderSehen);
+		buttonGroupB.add(AngeboteAnzeigen);
 
-		getContentPane().add(BorderLayout.CENTER, buttonGroup);
 		
+		getContentPane().add(BorderLayout.WEST, buttonGroupA);
+
+		getContentPane().add(BorderLayout.EAST, buttonGroupB);		
 		pack();
 		
-		this.setSize(300, 400);
+	
 		this.setLocationRelativeTo(null);
 		this.setVisible(true);
 
@@ -151,5 +162,4 @@ public class SachbearbeiterMainGUI extends JFrame{
 	public static void main(String[] args) {
 		new SachbearbeiterMainGUI();
 	}
-
 }

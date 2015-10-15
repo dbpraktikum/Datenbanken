@@ -55,7 +55,7 @@ public class HelferAnlegen extends JFrame {       /*   @pid int,
 		
 	   public HelferAnlegen(){
 		   super("Helfer Anlegen");
-			this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 			this.setLayout(new GridLayout(12,2));
 			this.setLocation(600,300);
 			this.setSize(2000, 2000);
@@ -124,6 +124,7 @@ public class HelferAnlegen extends JFrame {       /*   @pid int,
 		     });
 			 this.getContentPane().add(save);
 			  pack();
+			  this.setVisible(true);
 		  
 	   }
 	   

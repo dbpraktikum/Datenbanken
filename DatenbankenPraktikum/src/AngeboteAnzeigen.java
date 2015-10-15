@@ -99,7 +99,7 @@ public class AngeboteAnzeigen extends JFrame {
             JScrollPane scroll = new JScrollPane(pan);
             this.add(scroll, BorderLayout.CENTER);
  
-            this.setVisible(true);
+            
     
     
              
@@ -107,7 +107,7 @@ public class AngeboteAnzeigen extends JFrame {
              
             this.setSize(1500, 500);
             this.setLocationRelativeTo(null);
-     
+            this.setVisible(true);
              
         }
          
