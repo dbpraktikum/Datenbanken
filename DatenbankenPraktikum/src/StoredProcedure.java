@@ -58,15 +58,6 @@ public class StoredProcedure {
 	            cstmt.setString("Staatreg", staatreg);
 	            cstmt.setString("Stadtreg", stadtreg);
 	 
-	            System.out.println(email + " " + vorname + " " +   nachname + " " +   tel + " " + handy + " " + 
-	    	             geschlecht + " " +  passExistiert + " " +   gebDatum + " " + 
-	    	             unterkunft + " " +   einzugsdatum + " " + 
-	    	             wunschland + " " +   originalNachname + " " +  originalVorname + " " + 
-	    	             aufenthalt + " " +   gebdatValidiert + " " +   antragstatus + " " + 
-	    	              sid + " " +  thema + " " + date + " " +  sprache + " " + 
-	    	             sprachniveau + " " +   schreibniveau + " " +   leseniveau + " " + 
-	    	            bezeichnung + " " +   art + " " +  lat + " " + lonG + " " +   latr + " " + 
-	    	            longr + " " +   staat + " " +   stadt + " " +   staatreg + " " +   stadtreg);
 	            cstmt.execute();
 	        } catch (SQLException e) {
 	            // TODO Auto-generated catch block
@@ -139,7 +130,7 @@ public class StoredProcedure {
 			String hausnummer, String stadt, String ebene, String kreis, String bundesland) {
 
 		CallableStatement cstmt = ExecutionHelper.prepareCall(conn,
-				"GesSachbearbeiter",12);
+				"GesSachbearbeiter",14);
 
 		if(gemeinde == 0) {gemeinde = (Integer) null;}
 		if(kreis == "") {kreis = null;}

@@ -16,10 +16,13 @@ import javax.swing.JTable;
  
 public class MeineFluechtlingeSehen_ScrollableJTable extends javax.swing.JFrame{
 	
-	  public MeineFluechtlingeSehen_ScrollableJTable(){
+	private int id;
+	  public MeineFluechtlingeSehen_ScrollableJTable(int idx){
 	        //setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	        this.setDefaultCloseOperation(HIDE_ON_CLOSE);
 	        this.setTitle("Fluechtlinge anzeigen");
+	        
+	        id=idx;
 	          
 	        JPanel mainPanel = new JPanel();
 	        mainPanel.setLayout(new BorderLayout());
@@ -28,7 +31,7 @@ public class MeineFluechtlingeSehen_ScrollableJTable extends javax.swing.JFrame{
 	       
 	        Object[] spaltenbeschriftung = {"PersonId", "Vorname", "Nachname", "Original Vorname", "Original Nachname", "Geschelcht", "Geburtsdatum", "Telefonnummer", "Handynummer", "E-Mail", "Antragsstatus", "Thema"};
 	       
-	        ResultSet rs = Functions.sachbearbeiterSuchtSeineFluechtlinge(DatabaseConnector.connectToDatabase("DB_PR2015_02_01", "Test123!"), 3); 
+	        ResultSet rs = Functions.sachbearbeiterSuchtSeineFluechtlinge(DatabaseConnector.connectToDatabase("DB_PR2015_02_01", "Test123!"), id); 
 	        String[][] FDaten = new String[20][12];
 	        int i =0;
 	        try {
@@ -89,7 +92,7 @@ public class MeineFluechtlingeSehen_ScrollableJTable extends javax.swing.JFrame{
 	    }
 	 
 	public static void main(String[] args) {
-	    MeineFluechtlingeSehen_ScrollableJTable test = new MeineFluechtlingeSehen_ScrollableJTable();
+	    MeineFluechtlingeSehen_ScrollableJTable test = new MeineFluechtlingeSehen_ScrollableJTable(3);
 	 test.setVisible(true);
 	}
 }
