@@ -14,8 +14,8 @@ public class Loginanwendung {
 	         "databaseName=DB_PR2015_02";
 	
 	
-	public String[] login(String userName, String userPassword, String rolle) {
-		String[] loginData = null;
+	public int login(String userName, String userPassword, String rolle) {
+		int loginData = -1;
 		Statement stmt = null;
 		Connection conn = null;
 		ResultSet rs = null;
@@ -27,7 +27,7 @@ public class Loginanwendung {
 		}
 		try {
 			 conn = DriverManager.getConnection(dataBaseUrl, databaseUserName, databaseUserPassword);
-			 loginData = ExecutionHelper.loginDatabase(conn, userName ,  userPassword, rolle);
+			 loginData = loginDatabase(conn, userName ,  userPassword, rolle);
 			 conn.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -40,4 +40,26 @@ public class Loginanwendung {
 		}
 	return loginData;
 	}
+	
+	private static int loginDatabase(Connection conn, String userId, String passwort, String rolle){
+		int loginData = -1;
+		String sql = "select DB_PR2015_02.dbo.anmelden('" + userId + "' , '" + passwort+"' , '" + rolle +"' )";
+		Statement stmt;
+		try {
+			System.out.println(sql);
+			stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery(sql);
+			while(rs.next()){
+				loginData = rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return loginData;
+	}	
+	
 }
+
+

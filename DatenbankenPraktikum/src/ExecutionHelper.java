@@ -45,25 +45,7 @@ public class ExecutionHelper {
 		
 		return cstmt;
 	}
-	public static String[] loginDatabase(Connection conn, String userId, String passwort, String rolle){
-		String[] loginData = new String[3];
-		String sql = "select * from anmelden('" + userId + "' , '" + passwort+"' , '" + rolle +"' )";
-		Statement stmt;
-		try {
-			stmt = conn.createStatement();
-			ResultSet rs = stmt.executeQuery(sql);
-			while(rs.next()){
-				loginData[0] = rs.getString(1);
-				loginData[1] = rs.getString(2);
-				loginData[2] = rs.getString(3);
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		return loginData;
-	}	
+	
 	
 	public static ResultSet callFunction(Connection conn, String functionName, String[] paramValue){
 		ResultSet rs = null;

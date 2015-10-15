@@ -38,8 +38,8 @@ public class LoginFenster extends javax.swing.JFrame{
 				System.out.println("Anmelden als " + auswahl[auswahlComboBox.getSelectedIndex()]);
 				
 				Loginanwendung login = new Loginanwendung();
-				String[] loginData = login.login(benutzer.getText(), new String(pass.getPassword()), (String) auswahlComboBox.getSelectedItem());
-				if(loginData[0] == null){
+				int loginData = login.login(benutzer.getText(), new String(pass.getPassword()), (String) auswahlComboBox.getSelectedItem());
+				if(loginData == -1){
 					leer.setText("Login Fehler!");
 					leer.setForeground(Color.RED);
 				}

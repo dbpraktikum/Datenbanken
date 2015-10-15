@@ -15,11 +15,13 @@ public class RegistrierungFenster extends javax.swing.JFrame{
 		super("Registrierung");
 		JFrame f = this;
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-		this.setLayout(new GridLayout(4,2,10,0));
+		this.setLayout(new GridLayout(5,2,10,0));
+		JLabel personid = new JLabel("PersonId:");
 		JLabel benutzername = new JLabel("Benutzername:");
 		JLabel passwort = new JLabel("Passwort:");
 		JLabel anmeldung = new JLabel("Registrieren als");
 		JLabel leer = new JLabel();
+		JTextField person = new JTextField("");
 		JTextField benutzer = new JTextField("");
 		JPasswordField pass = new JPasswordField("");
 		String[] auswahl = {"Flüchtling", "Helfer", "Sachbearbeiter"};
@@ -37,30 +39,32 @@ public class RegistrierungFenster extends javax.swing.JFrame{
 				System.out.println("Registriert als " + auswahl[auswahlComboBox.getSelectedIndex()]);
 				
 				//TODO Registration überprüfen
-				Loginanwendung login = new Loginanwendung();
+				Registrierungsanwendung reg = new Registrierungsanwendung();
 				//String[] loginData = login.login(benutzer.getText(), new String(pass.getPassword()), (String) auswahlComboBox.getSelectedItem());
-				if(/*loginData[0] == null*/true){
+				if(!reg.registrieren(Integer.parseInt(person.getText()), benutzer.getText(), new String(pass.getPassword()), (String) auswahlComboBox.getSelectedItem())){
 					leer.setText("Registration Fehler!");
 					leer.setForeground(Color.RED);
 				}
-				/*else {
+				else {
 					System.out.println("erfolgreich");
 					f.dispose();
+					parent.dispose();
 					if (auswahlComboBox.getSelectedIndex() == 0) {
-											}
+						new FluechtlingMainGUI();
+					}
 					if (auswahlComboBox.getSelectedIndex() == 1) {
-						
+						new HelferMainGUI();
 					}
 					if (auswahlComboBox.getSelectedIndex() == 2) {
-						
+						new SachbearbeiterMainGUI();
 					}
-				}*/
-				parent.dispose();
+				}
 			}
 			
 		});
 		
-		
+		this.add(personid);
+		this.add(person);
 		this.add(benutzername);
 		this.add(benutzer);
 		this.add(passwort);
