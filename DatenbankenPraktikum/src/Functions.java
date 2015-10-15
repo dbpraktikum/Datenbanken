@@ -60,7 +60,7 @@ public class Functions {
 	}
 	
 	public static ResultSet anzeigenFluechtlingeInUnterkunft(Connection conn, int uid){
-		return ExecutionHelper.callFunction(conn, "FluechtlinInUnterkunft",uid);
+		return ExecutionHelper.callFunction(conn, "FluechtlingeInUnterkunft",uid);
 	}
 	
 	public static ResultSet anzeigenFluechtlingeInUnterkunftKommenAus(Connection conn, int uid, int kommtausId){

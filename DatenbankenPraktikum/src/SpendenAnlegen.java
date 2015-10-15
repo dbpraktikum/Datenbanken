@@ -114,5 +114,7 @@ public class SpendenAnlegen extends JFrame{
 	      this.setLocationRelativeTo(null);
 	      this.setVisible(true);
 	    }
-	    
+	    public static void main(String[] args){
+	    	new SpendenAnlegen("DB_PR2015_02_03", "Test123!");
+	    }
 }

@@ -20,7 +20,6 @@ public class ExecutionHelper {
 		}
 		try {
 			Statement stmt = conn.createStatement();
-			System.out.println(sql.toString());
 			stmt.execute(sql.toString());
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -32,11 +31,9 @@ public class ExecutionHelper {
 		StringBuilder sql = new StringBuilder("{call " + procedureName + "(?");
 		for(int i = 0; i < numberOfParameter - 1; i++){
 			sql.append(",?");
-			System.out.println(i);
 		}
 		sql.append(")}");
 		try {
-			System.out.println(sql.toString());
 			cstmt = conn.prepareCall(sql.toString(),ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
