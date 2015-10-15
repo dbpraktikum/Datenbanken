@@ -1,3 +1,4 @@
+package Merge;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -32,7 +33,7 @@ public class HelferAnlegen extends JFrame {       /*   @pid int,
 	JLabel handy = new JLabel();
 	JLabel gemeinde = new JLabel();
 	JLabel adresse = new JLabel();
-	JLabel Straße = new JLabel();
+	JLabel Strasse = new JLabel();
 	JLabel PLZ = new JLabel();
 	JLabel Hausnummer = new JLabel();
     JLabel Stadt = new JLabel();
@@ -46,7 +47,7 @@ public class HelferAnlegen extends JFrame {       /*   @pid int,
 	JTextField handy1 = new JTextField();
 	JTextField gemeinde1 = new JTextField();
 	JTextField adresse1 = new JTextField();
-	JTextField Straße1 = new JTextField();
+	JTextField Strasse1 = new JTextField();
 	JTextField PLZ1 = new JTextField();
 	JTextField Hausnummer1 = new JTextField();
     JTextField Stadt1 = new JTextField();
@@ -68,7 +69,7 @@ public class HelferAnlegen extends JFrame {       /*   @pid int,
 	  handy.setText("Handy");
 	  gemeinde.setText("Gemeinde");
 	  adresse.setText("Adresse");
-	  Straße.setText("Straße");
+	  Strasse.setText("Strasse");
 	  PLZ.setText("PLZ");
 	  Hausnummer.setText("Hausnummer");
 	  Stadt.setText("Stadt");
@@ -92,8 +93,8 @@ public class HelferAnlegen extends JFrame {       /*   @pid int,
 	  this.getContentPane().add ( adresse1 ) ;
 	  this.getContentPane().add ( Stadt ) ;
 	  this.getContentPane().add ( Stadt1 ) ;
-	  this.getContentPane().add ( Straße ) ;
-	  this.getContentPane().add ( Straße1 ) ;
+	  this.getContentPane().add ( Strasse ) ;
+	  this.getContentPane().add ( Strasse1 ) ;
 	  this.getContentPane().add ( Hausnummer ) ;
 	  this.getContentPane().add ( Hausnummer1 ) ;
 	  this.getContentPane().add ( PLZ ) ;
@@ -113,7 +114,7 @@ public class HelferAnlegen extends JFrame {       /*   @pid int,
 	              int gemeinde2 =Integer.parseInt(gemeinde1.getText());
 	              int Adresse2 =Integer.parseInt(adresse1.getText());
 	              String Stadt2 =Stadt1.getText();
-	              String Strasse2 =Straße1.getText();
+	              String Strasse2 =Strasse1.getText();
 	              int PLZ2 =Integer.parseInt(PLZ1.getText());
 	              String Hausnummer2 =Hausnummer1.getText();
 	            
@@ -123,7 +124,8 @@ public class HelferAnlegen extends JFrame {       /*   @pid int,
 	         }   
 	     });
 		 this.getContentPane().add(save);
-		  pack();
+		 pack();
+		 this.setVisible(true); 
 	  
    }
    

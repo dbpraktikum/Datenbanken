@@ -1,10 +1,11 @@
+package Merge;
 import java.sql.Connection;
 import java.sql.ResultSet;
 
 
 public class Functions {
 	
-	public static ResultSet adresseEinerUnterkunft(Connection conn,int uid){
+	public static ResultSet adresseEinerUnterkunft(Connection conn, int uid){
 		return ExecutionHelper.callFunction(conn, "AdresseUnterkunft",uid);
 	}
 	
@@ -159,6 +160,54 @@ public class Functions {
 	public static ResultSet anzeigenUnterkuenfteInGemeinde(Connection conn, int gid){
 		return ExecutionHelper.callFunction(conn, "UnterkuenfteInGemeindeSehen",gid);
 	}
+	
+	
+	
+	
+	
+	
+	
+	public static ResultSet kreiseImBundesland(Connection conn, String bundeslandName){
+		String[] input = new String[1];
+		input[0] = "'"+ bundeslandName + "'";
+		return ExecutionHelper.callFunction(conn, "KreiseImBundeslandSehen",input);
+	}
+	
+	public static ResultSet gemeindenImKreis(Connection conn, String kreisName){
+		String[] input = new String[1];
+		input[0] = "'"+ kreisName + "'";
+		return ExecutionHelper.callFunction(conn, "GemeindenImKreisSehen",input);
+	}
+	
+	public static ResultSet unterkuenfteInGemeinde(Connection conn, String gemeindeId){
+		String[] input = new String[1];
+		input[0] = "'"+ gemeindeId + "'";
+		return ExecutionHelper.callFunction(conn, "UnterkuenfteInGemeindeSehen",input);
+	}
+	
+	public static ResultSet fluechtlingeInGemeinde(Connection conn, String gemeindeId){
+		String[] input = new String[1];
+		input[0] = "'"+ gemeindeId + "'";
+		return ExecutionHelper.callFunction(conn, "FluechtlingeInGemeinde",input);
+	}
+	
+	public static ResultSet fluechtlingeInKreis(Connection conn, String kreis){
+		String[] input = new String[1];
+		input[0] = "'"+ kreis + "'";
+		return ExecutionHelper.callFunction(conn, "FluechtlingeInKreis",input);
+	}
+	
+	public static ResultSet fluechtlingeInBundesland(Connection conn, String bundesland){
+		String[] input = new String[1];
+		input[0] = "'"+ bundesland + "'";
+		return ExecutionHelper.callFunction(conn, "FluechtlingeInBundesland",input);
+	}
+	
+	
+	
+	
+	
+	
 	
 	public static void main(String... args){
 		System.out.println(alleBundeslaenderSehen(DatabaseConnector.connectToDatabase("DB_PR2015_02_01", "Test123!")));

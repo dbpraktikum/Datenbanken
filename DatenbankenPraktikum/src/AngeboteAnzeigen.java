@@ -1,3 +1,4 @@
+package Merge;
 
 	
 
@@ -23,17 +24,22 @@ public class AngeboteAnzeigen extends JFrame {
      
 
  
-    public AngeboteAnzeigen() throws SQLException {
+    public AngeboteAnzeigen() throws SQLException{
         super("Angebote der Gemeinde");
-        //setLocation(500, 500);
         setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-
+        
+        ResultSet rsSprachkurs = Functions.angeboteSehenSprachkurse(DatabaseConnector.connectToDatabase(databaseUsername, databasePassword), 1); 
+        int sprachkurseAnzahl = 0;
+        while(rsSprachkurs.next()){
+        	sprachkurseAnzahl++;
+        }
+        
         ResultSet rs = Functions.angeboteSehenSprachkurse(DatabaseConnector.connectToDatabase(databaseUsername, databasePassword), 1); 
 
-        Object ADatenS[][] = new String[20][11];
+        Object ADatenS[][] = new String[sprachkurseAnzahl][11];
         int i =0;
         while(rs.next()){
-        	
+			
 			ADatenS[i][0] = rs.getString(1);
 			ADatenS[i][1] = rs.getString(3);
 			ADatenS[i][2] = rs.getString(8);
@@ -45,27 +51,34 @@ public class AngeboteAnzeigen extends JFrame {
 			ADatenS[i][8] = rs.getString(11);
 			ADatenS[i][9] = rs.getString(10);
 			ADatenS[i][10] = rs.getString(12);
-			
+			i++;
+		}
+        
+        ResultSet rsAndere = Functions.angeboteSehenAndere(DatabaseConnector.connectToDatabase(databaseUsername, databasePassword), 1); 
+        int andereAnzahl = 0;
+        while(rsAndere.next()){
+        	andereAnzahl++;
         }
         
         ResultSet rs2 = Functions.angeboteSehenAndere(DatabaseConnector.connectToDatabase(databaseUsername, databasePassword), 1); 
-        Object ADatenA[][] = new String[20][8];
-        int j = 0;
+        Object ADatenA[][] = new String[andereAnzahl][8];
+        int index = 0;
         while(rs2.next()){
-        	ADatenA[i][0] = rs2.getString(1);
-			ADatenA[i][1] = rs2.getString(3);
-			ADatenA[i][2] = rs2.getString(8);
-			ADatenA[i][3] = rs2.getString(5);
-			ADatenA[i][4] = rs2.getString(6);
-			ADatenA[i][5] = rs2.getString(4);
-			ADatenA[i][6] = rs2.getString(2);
-			ADatenA[i][7] = rs2.getString(9);
-        }
+			ADatenA[index][0] = rs2.getString(1);
+			ADatenA[index][1] = rs2.getString(3);
+			ADatenA[index][2] = rs2.getString(8);
+			ADatenA[index][3] = rs2.getString(5);
+			ADatenA[index][4] = rs2.getString(6);
+			ADatenA[index][5] = rs2.getString(4);
+			ADatenA[index][6] = rs2.getString(2);
+			ADatenA[index][7] = rs2.getString(9);
+			index++;
+		}
         
         
         	ueberschrift1 = new JLabel("Sprachkursangebote");
         	ueberschrift2 = new JLabel("Andere Kursangebote");
-            Object sprachColumns[] = {"Angebotsnummer","Name","Wochentag","Zeit","Ort","max. Belegung","Kontaktnummer","fuer Sprachniveau","f�r Leseniveau","f�r Schreibniveau","Beschreibung"};
+            Object sprachColumns[] = {"Angebotsnummer","Name","Wochentag","Zeit","Ort","max. Belegung","Kontaktnummer","Sprachniveau","Leseniveau","Schreibniveau","Beschreibung"};
             Object andereColumns[] = {"Angebotsnummer","Name","Wochentag","Zeit","Ort","max. Belegung","Kontaktnummer","Beschreibung"};
             		
             JTable sprach = new JTable(ADatenS,sprachColumns);
