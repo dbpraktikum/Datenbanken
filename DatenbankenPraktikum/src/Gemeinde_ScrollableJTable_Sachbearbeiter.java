@@ -12,13 +12,9 @@ import javax.swing.JTable;
 
 
 
-public class Gemeinde_ScrollableJTable_Sachbearbeiter extends javax.swing.JFrame{
+public class Gemeinde_ScrollableJTable_Sachbearbeiter extends javax.swing.JFrame{	
 	
-	private final String databaseUsername = "DB_Pr2015_02_01";
-	private final String databasePassword = "Test123!";
-	
-	
-	public Gemeinde_ScrollableJTable_Sachbearbeiter(String kreis) throws SQLException{
+	public Gemeinde_ScrollableJTable_Sachbearbeiter(String kreis, String databaseUsername, String databasePassword) throws SQLException{
 		this.setDefaultCloseOperation(HIDE_ON_CLOSE);
         this.setTitle("Gemeinden im Kreis " + kreis);
         
@@ -36,17 +32,11 @@ public class Gemeinde_ScrollableJTable_Sachbearbeiter extends javax.swing.JFrame
         String[] spaltenbeschriftung = {"GId", "Name", "Einwohner", "Geodaten"};
         
         String[][] GDaten = new String[n][4];
-		/*for(int i = 0; i < GDaten.length; i++){
-			for(int j = 0; j < GDaten[i].length; j++){
-				GDaten[i][j] = "Gemeinde " + i + " " + j;
-			}
-		}*/
         
         ResultSet rs = Functions.gemeindenImKreis(DatabaseConnector.connectToDatabase(databaseUsername, databasePassword), kreis);
         
         int index = 0;
 		while (rs.next()) {
-			System.out.println("Gemeinde: " + rs.getString(2));
 			GDaten[index][0] = rs.getString(1);
 			GDaten[index][1] = rs.getString(2);
 			GDaten[index][2] = rs.getString(3);
@@ -68,9 +58,8 @@ public class Gemeinde_ScrollableJTable_Sachbearbeiter extends javax.swing.JFrame
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if(e.getButton() == 1){
-					System.out.println("1 - Linksklick");
 				try {
-					new UnterkunftInGemeinde_ScrollableJTable("" + table.getValueAt(table.rowAtPoint(e.getPoint()),0), "" + table.getValueAt(table.rowAtPoint(e.getPoint()),1));
+					new UnterkunftInGemeinde_ScrollableJTable("" + table.getValueAt(table.rowAtPoint(e.getPoint()),0), "" + table.getValueAt(table.rowAtPoint(e.getPoint()),1), databaseUsername, databasePassword);
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					System.out.println("Klasse: Gemeinde_ScrollableJTable - UnterkunftInGemeinde_ScrollableJTable()");
@@ -78,9 +67,8 @@ public class Gemeinde_ScrollableJTable_Sachbearbeiter extends javax.swing.JFrame
 				}
 				}
 				if(e.getButton() == 3){
-					System.out.println("3 - Rechtsklick");
 					try {
-						new FluechtlingeInGemeinde_ScrollableJTable("" + table.getValueAt(table.rowAtPoint(e.getPoint()),0), "" + table.getValueAt(table.rowAtPoint(e.getPoint()),1));
+						new FluechtlingeInGemeinde_ScrollableJTable("" + table.getValueAt(table.rowAtPoint(e.getPoint()),0), "" + table.getValueAt(table.rowAtPoint(e.getPoint()),1), databaseUsername, databasePassword);
 					} catch (SQLException e1) {
 						// TODO Auto-generated catch block
 						System.out.println("Klasse: Gemeinde_ScrollableJTable - FluechtlingeInGemeinde_ScrollableJTable()");
@@ -120,14 +108,5 @@ public class Gemeinde_ScrollableJTable_Sachbearbeiter extends javax.swing.JFrame
         this.setLocationRelativeTo(null);
         this.setVisible(true);
 	}
-	
-	public static void main(String[] args) {
-		try {
-			Gemeinde_ScrollableJTable_Sachbearbeiter test = new Gemeinde_ScrollableJTable_Sachbearbeiter("Alzey-Worms");
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 
-    }
 }

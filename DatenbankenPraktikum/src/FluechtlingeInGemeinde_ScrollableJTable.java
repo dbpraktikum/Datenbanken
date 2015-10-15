@@ -10,15 +10,11 @@ import javax.swing.JTable;
 
 
 
-public class FluechtlingeInGemeinde_ScrollableJTable extends javax.swing.JFrame{
+public class FluechtlingeInGemeinde_ScrollableJTable extends javax.swing.JFrame{	
 	
-	private final String databaseUsername = "DB_Pr2015_02_01";
-	private final String databasePassword = "Test123!";
-	
-	
-	public FluechtlingeInGemeinde_ScrollableJTable(String gemeindeId, String gemeindeName) throws SQLException{
+	public FluechtlingeInGemeinde_ScrollableJTable(String gemeindeId, String gemeindeName, String databaseUsername, String databasePassword) throws SQLException{
 		this.setDefaultCloseOperation(HIDE_ON_CLOSE);
-        this.setTitle("Flüchtlinge in der Gemeinde " + gemeindeName);
+        this.setTitle("Fluechtlinge in der Gemeinde " + gemeindeName);
         
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new BorderLayout());
@@ -41,17 +37,11 @@ public class FluechtlingeInGemeinde_ScrollableJTable extends javax.swing.JFrame{
         String[] spaltenbeschriftung = {"Vorname", "Nachname", "Geschlecht", "Geburtsdatum", "Telefonnummer", "Handynummer", "E-Mail"};
         
         String[][] FDaten = new String[n][spaltenbeschriftung.length];
-		/*for(int i = 0; i < GDaten.length; i++){
-			for(int j = 0; j < GDaten[i].length; j++){
-				GDaten[i][j] = "Gemeinde " + i + " " + j;
-			}
-		}*/
         
         ResultSet rs = Functions.fluechtlingeInGemeinde(DatabaseConnector.connectToDatabase(databaseUsername, databasePassword), gemeindeId);
         
         int index = 0;
 		while (rs.next()) {
-			System.out.println("Flüchtling: " + rs.getString(1));
 			FDaten[index][0] = rs.getString(1);
 			FDaten[index][1] = rs.getString(2);
 			FDaten[index][2] = rs.getString(3);

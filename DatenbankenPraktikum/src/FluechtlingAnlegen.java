@@ -85,8 +85,8 @@ public class FluechtlingAnlegen extends JFrame {
 	JButton save;
 
 	private int id;
-   public FluechtlingAnlegen(int idx){
-	   super("Flüchtling Anlegen");
+   public FluechtlingAnlegen(int idx, String databaseUsername, String databasePassword){
+	   super("Fluechtling Anlegen");
 		this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		this.setLayout(new GridLayout(36,5));
 		this.setLocation(500,0);
@@ -109,21 +109,21 @@ public class FluechtlingAnlegen extends JFrame {
 	  OriginalNachname.setText("OriginalNachname");
 	  OriginalVorname.setText("OriginalVorname");
 	  Aufenhaltsland.setText("Aufenhaltsland");  
-	  GeburtsdatumV.setText("Geburtsdaum bestätigt (j/n)");
+	  GeburtsdatumV.setText("Geburtsdaum bestaetigt (j/n)");
 	  antragstatus.setText("Antragsstatus");
 	 
 	  Thema.setText("Thema");
 	  Date.setText("Date yyyy-mm-tt");
 	  Sprache.setText("Sprache");
-	  Sprachniveau.setText("Sprachniveau  (schlecht,ausreichend,gut,fließend)");
-	  Schreibniveau.setText("Schreibniveau  (schlecht,ausreichend,gut,fließend)");
-	  Leseniveau.setText("Leseniveau  (schlecht,ausreichend,gut,fließend)");
+	  Sprachniveau.setText("Sprachniveau  (schlecht,ausreichend,gut,fliessend)");
+	  Schreibniveau.setText("Schreibniveau  (schlecht,ausreichend,gut,fliessend)");
+	  Leseniveau.setText("Leseniveau  (schlecht,ausreichend,gut,fliessend)");
 	  Bezeichnung.setText("Bezeichnung");
 	  Art.setText("Art");
 	  lat.setText("breitengrad herkunft");
-	  lonG.setText("längengrad herkunft");
+	  lonG.setText("laengengrad herkunft");
 	  latr.setText("breitengrad registration");
-	  longr.setText("längengrad registration");
+	  longr.setText("laengengrad registration");
 	  staat.setText("staat herkunft");
 	  stadt.setText("stadt herkunft");
 	  staatreg.setText("staat reg");
@@ -263,7 +263,7 @@ public class FluechtlingAnlegen extends JFrame {
               /*  float lat, float lonG, float latr,
               float longr, String staat, String stadt, String staatreg, String stadtreg*/
         
-              StoredProcedure.anlegenFluechtling(DatabaseConnector.connectToDatabase("DB_PR2015_02_03", "Test123!"), email2, vorname2, nachname2,
+              StoredProcedure.anlegenFluechtling(DatabaseConnector.connectToDatabase(databaseUsername, databasePassword), email2, vorname2, nachname2,
             		  tel2, handy2, geschlecht2, passExistiert2, gebDatum2,   unterkunft2, einzugsdatum2, wunschland2, 
             		  originalNachname2,
             		  originalVorname2, aufenthalt2, gebdatValidiert2, antragstatus2, sid2, thema2, date2, sprache2, 
@@ -286,10 +286,6 @@ public class FluechtlingAnlegen extends JFrame {
 	            String bezeichnung, String art, float lat, float lonG, float latr,
 	            float longr, String staat, String stadt, String staatreg, String stadtreg*/
    
-   public static void main (String...args){
-	   FluechtlingAnlegen fa = new FluechtlingAnlegen(3);
-	   fa.setVisible(true);
-   }
 }
 
 

@@ -42,7 +42,7 @@ public class SpendenAnlegen extends JFrame{
 	     
 	    JButton speichern;
 	     
-	    public SpendenAnlegen(){
+	    public SpendenAnlegen(String databaseUsername, String databasePassword){
 	        super("Spende Anlegen");
 	        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	        this.setLayout(new GridLayout(9,2));
@@ -86,7 +86,7 @@ public class SpendenAnlegen extends JFrame{
 	            String tel = Tel1.getText();
 	            String handy = Handy1.getText();
 	         
-	            StoredProcedure.anlegenSpenden(DatabaseConnector.connectToDatabase("DB_PR2015_02_01", "Test123!"), name, anzahl, gid, email, vorname, nachname, tel, handy);
+	            StoredProcedure.anlegenSpenden(DatabaseConnector.connectToDatabase(databaseUsername, databasePassword), name, anzahl, gid, email, vorname, nachname, tel, handy);
 
 			}
 	          
@@ -114,10 +114,5 @@ public class SpendenAnlegen extends JFrame{
 	      this.setLocationRelativeTo(null);
 	      this.setVisible(true);
 	    }
-	     
-	    public static void main (String...args){
-	        SpendenAnlegen sp= new SpendenAnlegen();
-	        sp.setVisible (true);
-	         
-	    }
+	    
 }

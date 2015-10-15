@@ -36,11 +36,6 @@ public class Gemeinde_ScrollableJTable extends javax.swing.JFrame{
         String[] spaltenbeschriftung = {"GId", "Name", "Einwohner", "Geodaten"};
         
         String[][] GDaten = new String[n][4];
-		/*for(int i = 0; i < GDaten.length; i++){
-			for(int j = 0; j < GDaten[i].length; j++){
-				GDaten[i][j] = "Gemeinde " + i + " " + j;
-			}
-		}*/
         
         ResultSet rs = Functions.gemeindenImKreis(DatabaseConnector.connectToDatabase(databaseUsername, databasePassword), kreis);
         
@@ -70,7 +65,7 @@ public class Gemeinde_ScrollableJTable extends javax.swing.JFrame{
 				//if(e.getButton() == 1){
 				//System.out.println("1 - Linksklick");
 				try {
-					new UnterkunftInGemeinde_ScrollableJTable("" + table.getValueAt(table.rowAtPoint(e.getPoint()),0), "" + table.getValueAt(table.rowAtPoint(e.getPoint()),1));
+					new UnterkunftInGemeinde_ScrollableJTable("" + table.getValueAt(table.rowAtPoint(e.getPoint()),0), "" + table.getValueAt(table.rowAtPoint(e.getPoint()),1), databaseUsername, databasePassword);
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					System.out.println("Klasse: Gemeinde_ScrollableJTable - UnterkunftInGemeinde_ScrollableJTable()");

@@ -13,10 +13,7 @@ import javax.swing.JTable;
 
 public class Kreis_ScrollableJTable_Sachbearbeiter extends javax.swing.JFrame{
 	
-	private final String databaseUsername = "DB_Pr2015_02_01";
-	private final String databasePassword = "Test123!";
-	
-	public Kreis_ScrollableJTable_Sachbearbeiter(String bundesland) throws SQLException{
+	public Kreis_ScrollableJTable_Sachbearbeiter(String bundesland, String databaseUsername, String databasePassword) throws SQLException{
 		this.setDefaultCloseOperation(HIDE_ON_CLOSE);
         this.setTitle("Kreise im Bundesland " + bundesland);
         
@@ -31,7 +28,7 @@ public class Kreis_ScrollableJTable_Sachbearbeiter extends javax.swing.JFrame{
 			n++;
 		}
         
-        String[] spaltenbeschriftung = {"Name", "Aufnahme%", "Anzahl Flüchtlinge"};
+        String[] spaltenbeschriftung = {"Name", "Aufnahme%", "Anzahl Fluechtlinge"};
         
         ResultSet rs = Functions.kreiseImBundesland(DatabaseConnector.connectToDatabase(databaseUsername, databasePassword), bundesland);
         String[][] KDaten = new String[n][3];
@@ -64,7 +61,7 @@ public class Kreis_ScrollableJTable_Sachbearbeiter extends javax.swing.JFrame{
 				if(e.getButton() == 1){
 					System.out.println("1 - Linksklick");
 					try {
-						new Gemeinde_ScrollableJTable_Sachbearbeiter("" + table.getValueAt(table.rowAtPoint(e.getPoint()),0));
+						new Gemeinde_ScrollableJTable_Sachbearbeiter("" + table.getValueAt(table.rowAtPoint(e.getPoint()),0), databaseUsername, databasePassword);
 					} catch (SQLException e1) {
 						// TODO Auto-generated catch block
 						System.out.println("Klasse: Kreis_ScrollableJTable - Gemeinde_ScrollableJTable()");
@@ -74,7 +71,7 @@ public class Kreis_ScrollableJTable_Sachbearbeiter extends javax.swing.JFrame{
 				if(e.getButton() == 3){
 					System.out.println("3 - Rechtsklick");
 					try {
-						new FluechtlingeInKreis_ScrollableJTable("" + table.getValueAt(table.rowAtPoint(e.getPoint()),0));
+						new FluechtlingeInKreis_ScrollableJTable("" + table.getValueAt(table.rowAtPoint(e.getPoint()),0), databaseUsername, databasePassword);
 					} catch (SQLException e1) {
 						// TODO Auto-generated catch block
 						System.out.println("Klasse: Kreis_ScrollableJTable - FluechtlingeInKreis_ScrollableJTable()");
@@ -119,14 +116,5 @@ public class Kreis_ScrollableJTable_Sachbearbeiter extends javax.swing.JFrame{
         this.setLocationRelativeTo(null);
         this.setVisible(true);
 	}
-	
-	public static void main(String[] args) {
-		try {
-			Kreis_ScrollableJTable_Sachbearbeiter test = new Kreis_ScrollableJTable_Sachbearbeiter("Test");
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 
-    }
 }

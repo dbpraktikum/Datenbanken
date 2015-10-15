@@ -12,11 +12,8 @@ import javax.swing.JTable;
 
 public class FluechtlingeInBundesland_ScrollableJTable extends javax.swing.JFrame{
 	
-	private final String databaseUsername = "DB_Pr2015_02_01";
-	private final String databasePassword = "Test123!";
 	
-	
-	public FluechtlingeInBundesland_ScrollableJTable(String bundesland) throws SQLException{
+	public FluechtlingeInBundesland_ScrollableJTable(String bundesland,String databaseUsername, String databasePassword) throws SQLException{
 		this.setDefaultCloseOperation(HIDE_ON_CLOSE);
         this.setTitle("Flüchtlinge in dem Bundesland " + bundesland);
         

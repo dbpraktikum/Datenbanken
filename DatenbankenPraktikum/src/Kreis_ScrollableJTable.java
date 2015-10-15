@@ -13,12 +13,14 @@ import javax.swing.JTable;
 
 public class Kreis_ScrollableJTable extends javax.swing.JFrame{
 	
-	private final String databaseUsername = "DB_Pr2015_02_01";
-	private final String databasePassword = "Test123!";
+	private final String databaseUsername;
+	private final String databasePassword;
 	
-	public Kreis_ScrollableJTable(String bundesland) throws SQLException{
+	public Kreis_ScrollableJTable(String bundesland, String databaseUsername, String databasePassword) throws SQLException{
 		this.setDefaultCloseOperation(HIDE_ON_CLOSE);
         this.setTitle("Kreise im Bundesland " + bundesland);
+        this.databaseUsername = databaseUsername;
+        this.databasePassword = databasePassword;
         
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new BorderLayout());
@@ -120,13 +122,4 @@ public class Kreis_ScrollableJTable extends javax.swing.JFrame{
         this.setVisible(true);
 	}
 	
-	public static void main(String[] args) {
-		try {
-			Kreis_ScrollableJTable test = new Kreis_ScrollableJTable("Test");
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-    }
 }

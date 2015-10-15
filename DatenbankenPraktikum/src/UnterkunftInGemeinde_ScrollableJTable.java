@@ -10,15 +10,11 @@ import javax.swing.JTable;
 
 
 
-public class UnterkunftInGemeinde_ScrollableJTable extends javax.swing.JFrame{
+public class UnterkunftInGemeinde_ScrollableJTable extends javax.swing.JFrame{	
 	
-	private final String databaseUsername = "DB_Pr2015_02_01";
-	private final String databasePassword = "Test123!";
-	
-	
-	public UnterkunftInGemeinde_ScrollableJTable(String gemeindeId, String gemeindeName) throws SQLException{
+	public UnterkunftInGemeinde_ScrollableJTable(String gemeindeId, String gemeindeName, String databaseUsername, String databasePassword) throws SQLException{
 		this.setDefaultCloseOperation(HIDE_ON_CLOSE);
-        this.setTitle("Unterkünfte in der Gemeinde " + gemeindeName);
+        this.setTitle("Unterkuenfte in der Gemeinde " + gemeindeName);
         
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new BorderLayout());
@@ -36,14 +32,9 @@ public class UnterkunftInGemeinde_ScrollableJTable extends javax.swing.JFrame{
          * UId, Straße, Hausnummer, PLZ, Stadt, Kapazität, Anzahl-F, Vorname Vorsteher, Nachname Vorsteher, Tel, Handy, eMail
          */
         
-        String[] spaltenbeschriftung = {"UId", "PLZ", "Stadt", "Straße", "Hausnummer", "Kapazität", "Anzahl Flüchtlinge", "Vorsteher - Vorname", "Vorsteher - Nachname"};
+        String[] spaltenbeschriftung = {"UId", "PLZ", "Stadt", "Straße", "Hausnummer", "Kapazitaet", "Anzahl Fluechtlinge", "Vorsteher - Vorname", "Vorsteher - Nachname"};
         
         String[][] GDaten = new String[n][spaltenbeschriftung.length];
-		/*for(int i = 0; i < GDaten.length; i++){
-			for(int j = 0; j < GDaten[i].length; j++){
-				GDaten[i][j] = "Gemeinde " + i + " " + j;
-			}
-		}*/
         
         ResultSet rs = Functions.unterkuenfteInGemeinde(DatabaseConnector.connectToDatabase(databaseUsername, databasePassword), gemeindeId);
         

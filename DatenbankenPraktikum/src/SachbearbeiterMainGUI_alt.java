@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import javax.swing.*;
 
 
-public class SachbearbeiterMainGUI extends JFrame{
+public class SachbearbeiterMainGUI_alt extends JFrame{
 	private JButton FluechtlingAnlegen;
 	private JButton HelferAnlegen;
 	private JButton SachbearbeiterAnlegen;
@@ -22,11 +22,12 @@ public class SachbearbeiterMainGUI extends JFrame{
 	private JPanel buttonGroup;
 	private int id;
 
-	public SachbearbeiterMainGUI(int idx, String databaseUsername, String databasePassword) {
+	public SachbearbeiterMainGUI_alt(int idx, String databaseUsername, String databasePassword) {
 		super("Sachbearbeiter");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		id = idx;
+		this.setSize(1500,6000);
 		this.setLayout(new BorderLayout(0,5));
 		FluechtlingAnlegen = new JButton("Neuen Fuechtling Anlegen");
 		HelferAnlegen = new JButton("Neuen Helfer Anlegen");
@@ -139,21 +140,26 @@ public class SachbearbeiterMainGUI extends JFrame{
 
 
 		getContentPane().add(BorderLayout.PAGE_START, Ueberschrift);
-		GridLayout gridL = new GridLayout(4,2);
-		JPanel panel = new JPanel(gridL);
-		this.getContentPane().add(panel);
-		panel.add(FluechtlingAnlegen);
-		panel.add(HelferAnlegen);
-		panel.add(SachbearbeiterAnlegen);
-		panel.add(UnterkunftAnlegen);
-		panel.add(SpendeAnlegen);
-		panel.add(MeineFluechtlingeSehen);
-		panel.add(BundeslaenderSehen);
-		panel.add(AngeboteAnzeigen);
 		
+	
+		JPanel buttonGroupA = new JPanel(new GridLayout(6,1));
+		JPanel buttonGroupB = new JPanel(new GridLayout(6,1));
+		buttonGroupA.add(FluechtlingAnlegen);
+		buttonGroupA.add(HelferAnlegen);
+		buttonGroupA.add(SachbearbeiterAnlegen);
+		buttonGroupA.add(UnterkunftAnlegen);
+		buttonGroupA.add(SpendeAnlegen);
+		buttonGroupB.add(MeineFluechtlingeSehen);
+		buttonGroupB.add(BundeslaenderSehen);
+		buttonGroupB.add(AngeboteAnzeigen);
+
+		
+		getContentPane().add(BorderLayout.WEST, buttonGroupA);
+
+		getContentPane().add(BorderLayout.EAST, buttonGroupB);		
 		pack();
 		
-		this.setSize(450, 250);
+	
 		this.setLocationRelativeTo(null);
 		this.setVisible(true);
 

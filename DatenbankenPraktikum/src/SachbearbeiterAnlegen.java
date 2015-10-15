@@ -48,7 +48,7 @@ public class SachbearbeiterAnlegen extends JFrame {
 	  
 	 
 	    JButton save;
-	   public SachbearbeiterAnlegen(){
+	   public SachbearbeiterAnlegen(String databaseUsername, String databasePassword){
 	       super("Sachbearbeiter Anlegen");
 	        this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 	        this.setLayout(new GridLayout(16,2));
@@ -137,7 +137,7 @@ public class SachbearbeiterAnlegen extends JFrame {
 			int gemeinde, String aktiv, String strasse, int plz,
 			String hausnummer, String stadt, String ebene, String kreis, String bundesland*/
 	             
-	                  StoredProcedure.anlegenSacharbeiter(DatabaseConnector.connectToDatabase("DB_PR2015_02_03", "Test123!"),email2,  vorname, nachname, tel, handy,
+	                  StoredProcedure.anlegenSacharbeiter(DatabaseConnector.connectToDatabase(databaseUsername, databasePassword),email2,  vorname, nachname, tel, handy,
 	                		   gid, aktiv, strasse, plz, hausnummer,
 	                		  stadt,  ebene, kreis, bundesland );
 	             }   
@@ -146,12 +146,7 @@ public class SachbearbeiterAnlegen extends JFrame {
 	      pack();
 		  this.setVisible(true);
 	   }
-	    
-	   public static void main (String...args){
-	       SachbearbeiterAnlegen sa = new SachbearbeiterAnlegen();
-	       sa.setVisible(true);
-	   }
-	 
+	    	 
 
 
 }

@@ -13,12 +13,10 @@ import javax.swing.JTable;
 
 public class Bundesland_ScrollableJTable_Sachbearbeiter extends javax.swing.JFrame{
 	
-	private final String databaseUsername = "DB_Pr2015_02_01";
-	private final String databasePassword = "Test123!";
 	
-	public Bundesland_ScrollableJTable_Sachbearbeiter() throws SQLException{
+	public Bundesland_ScrollableJTable_Sachbearbeiter(String databaseUsername, String databasePassword) throws SQLException{
 		this.setDefaultCloseOperation(HIDE_ON_CLOSE);
-        this.setTitle("Bundesländer anzeigen");
+        this.setTitle("Bundeslaender anzeigen");
         
         int n = 0;
         ResultSet testLaenge = Functions.alleBundeslaenderSehen(DatabaseConnector.connectToDatabase(databaseUsername, databasePassword));
@@ -33,13 +31,12 @@ public class Bundesland_ScrollableJTable_Sachbearbeiter extends javax.swing.JFra
         mainPanel.setLayout(new BorderLayout());
         mainPanel.setPreferredSize(new Dimension(1000, 400));
         
-        String[] spaltenbeschriftung = {"Name", "Anzahl Flüchtlinge", "Aufnahme%"};
+        String[] spaltenbeschriftung = {"Name", "Anzahl Fluechtlinge", "Aufnahme%"};
         
         String[][] BDaten = new String[n][3];
 		
 		int index = 0;
 		while (rs.next()) {
-			System.out.println("Bundesland: " + rs.getString(1));
 			BDaten[index][0] = rs.getString(1);
 			BDaten[index][1] = rs.getString(2);
 			BDaten[index][2] = rs.getString(3);
@@ -56,9 +53,8 @@ public class Bundesland_ScrollableJTable_Sachbearbeiter extends javax.swing.JFra
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if(e.getButton() == 1){
-					System.out.println("1 - Linksklick");
 					try {
-						new Kreis_ScrollableJTable_Sachbearbeiter("" + table.getValueAt(table.rowAtPoint(e.getPoint()),0));
+						new Kreis_ScrollableJTable_Sachbearbeiter("" + table.getValueAt(table.rowAtPoint(e.getPoint()),0), databaseUsername, databasePassword);
 					} catch (SQLException e1) {
 						// TODO Auto-generated catch block
 						System.out.println("Klasse: Bundesland_ScrollableJTable - Kreis_ScrollableJTable()");
@@ -66,9 +62,8 @@ public class Bundesland_ScrollableJTable_Sachbearbeiter extends javax.swing.JFra
 					}
 				}
 				if(e.getButton() == 3){
-					System.out.println("3 - Rechtsklick");
 					try {
-						new FluechtlingeInBundesland_ScrollableJTable("" + table.getValueAt(table.rowAtPoint(e.getPoint()),0));
+						new FluechtlingeInBundesland_ScrollableJTable("" + table.getValueAt(table.rowAtPoint(e.getPoint()),0),databaseUsername, databasePassword);
 					} catch (SQLException e1) {
 						// TODO Auto-generated catch block
 						System.out.println("Klasse: Bundesland_ScrollableJTable - FluechtlingeInBundesland_ScrollableJTable()");
@@ -113,13 +108,4 @@ public class Bundesland_ScrollableJTable_Sachbearbeiter extends javax.swing.JFra
         this.setVisible(true);
 	}
 	
-	public static void main(String[] args) {
-		try {
-			new Bundesland_ScrollableJTable_Sachbearbeiter();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-    }
 }

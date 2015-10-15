@@ -53,8 +53,8 @@ public class FluechtlingBearbeiten extends JFrame {
 	    JTextField PId1 =new JTextField();
 	     
 	    JButton speichern;
-	    public FluechtlingBearbeiten (int fid) throws SQLException{
-	        super("Flüchtling Anlegen");
+	    public FluechtlingBearbeiten (int fid, String databaseUsername, String databasePassword) throws SQLException{
+	        super("Fluechtling Anlegen");
 	        this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 	        this.setLayout(new GridLayout(27,5));
 	        this.setLocation(600,300);
@@ -79,43 +79,38 @@ public class FluechtlingBearbeiten extends JFrame {
 	      Aufenhaltsland.setText("Aufenhaltsland");  
 	      GeburtsdatumV.setText("GeburtsdaumV");
 	      Antragsstatus.setText("Antragsstatus");
-	     PId.setText("Person Id");
+	      PId.setText("Person Id");
 	 
 	       
 	 
-	      ResultSet rs = Functions.anzeigenFluechtling(DatabaseConnector.connectToDatabase("DB_PR2015_02_01", "Test123!"), fid); 
+	      ResultSet rs = Functions.anzeigenFluechtling(DatabaseConnector.connectToDatabase(databaseUsername, databasePassword), fid); 
 	      String[][] FDaten = new String[2][20];
 	 
 	       
-	      try {
-	            while(rs.next()){
-	                System.out.println(rs.getString(1));
-	                System.out.println(rs.getString(2));
-	                FDaten[1][0] = rs.getString(1);
-	                FDaten[1][1] = rs.getString(2);
-	                FDaten[1][2] = rs.getString(3);
-	                FDaten[1][3] = rs.getString(4);
-	                FDaten[1][4] = rs.getString(5);
-	                FDaten[1][5] = rs.getString(6);
-	                FDaten[1][6] = rs.getString(7);
-	                FDaten[1][7] = rs.getString(8);
-	                FDaten[1][8] = rs.getString(9);
-	                FDaten[1][9] = rs.getString(10);
-	                FDaten[1][10] = rs.getString(11);
-	                FDaten[1][11] = rs.getString(12);
-	                FDaten[1][12] = rs.getString(13);
-	                FDaten[1][13] = rs.getString(14);
-	                FDaten[1][14] = rs.getString(15);
-	                FDaten[1][15] = rs.getString(16);
-	                FDaten[1][16] = rs.getString(17);
-	                 
-	                 
-	                 
-	            }
-	        } catch (SQLException e) {
-	            // TODO Auto-generated catch block
-	            e.printStackTrace();
-	        }
+	      while(rs.next()){
+		    System.out.println(rs.getString(1));
+		    System.out.println(rs.getString(2));
+		    FDaten[1][0] = rs.getString(1);
+		    FDaten[1][1] = rs.getString(2);
+		    FDaten[1][2] = rs.getString(3);
+		    FDaten[1][3] = rs.getString(4);
+		    FDaten[1][4] = rs.getString(5);
+		    FDaten[1][5] = rs.getString(6);
+		    FDaten[1][6] = rs.getString(7);
+		    FDaten[1][7] = rs.getString(8);
+		    FDaten[1][8] = rs.getString(9);
+		    FDaten[1][9] = rs.getString(10);
+		    FDaten[1][10] = rs.getString(11);
+		    FDaten[1][11] = rs.getString(12);
+		    FDaten[1][12] = rs.getString(13);
+		    FDaten[1][13] = rs.getString(14);
+		    FDaten[1][14] = rs.getString(15);
+		    FDaten[1][15] = rs.getString(16);
+		    FDaten[1][16] = rs.getString(17);
+		     
+		     
+		     
+		}
 	       
 	       
 	       
@@ -201,11 +196,7 @@ public class FluechtlingBearbeiten extends JFrame {
 	              String aufenthalt2 =Aufenhaltsland1.getText();
 	              String gebdatValidiert2 =OriginalVorname1.getText();
 	              String antragstatus2 =OriginalVorname1.getText();
-	              String originalvorname2 =OriginalVorname1.getText();
-	              
-	      
-	           
-	            StoredProcedure.updateFluechtling(DatabaseConnector.connectToDatabase("DB_PR2015_02_01", "Test123!"), fid, email, vorname2, nachname2, tel2, handy2, geschlecht2, pass2, gebDatum2, unterkunft2, einzugsdatum2, wunschland2, orginalNachname2, orginalVorname2, aufenthalt2, gebdatValidiert2, antragstatus2);
+	              StoredProcedure.updateFluechtling(DatabaseConnector.connectToDatabase(databaseUsername, databasePassword), fid, email, vorname2, nachname2, tel2, handy2, geschlecht2, pass2, gebDatum2, unterkunft2, einzugsdatum2, wunschland2, orginalNachname2, orginalVorname2, aufenthalt2, gebdatValidiert2, antragstatus2);
 	          }
 	            
 	      });
@@ -214,9 +205,4 @@ public class FluechtlingBearbeiten extends JFrame {
 	        this.setVisible(true);
 	 
 	    }
-//	    public static void main (String...args) throws SQLException{
-//	           FluechtlingBearbeiten fb = new FluechtlingBearbeiten(5);
-//	           fb.setVisible(true);
-//	       }
-
 }

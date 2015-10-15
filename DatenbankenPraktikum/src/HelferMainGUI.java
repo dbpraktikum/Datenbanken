@@ -19,7 +19,7 @@ public class HelferMainGUI extends JFrame{
 	
 	private int id;
 
-	public HelferMainGUI(int idx) {
+	public HelferMainGUI(int idx, String databaseUsername, String databasePassword) {
 		super("Helfer");
 		//setLocation(500, 500);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -38,7 +38,7 @@ public class HelferMainGUI extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				try {
-					new AngeboteAnzeigen();
+					new AngeboteAnzeigen(databaseUsername, databasePassword);
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					System.out.println("Klasse: HelferMainGUI - AngeboteAnzeigen()");
@@ -71,7 +71,7 @@ public class HelferMainGUI extends JFrame{
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
 				try {
-					new Bundesland_ScrollableJTable();
+					new Bundesland_ScrollableJTable(databaseUsername, databasePassword);
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					System.out.println("Klasse: HelferMainGUI - Bundesland_ScrollableJTable()");
@@ -105,10 +105,6 @@ public class HelferMainGUI extends JFrame{
 		this.setLocationRelativeTo(null);
 		this.setVisible(true);
 
-	}
-
-	public static void main(String[] args) {
-		HelferMainGUI h = new HelferMainGUI();
 	}
 
 }

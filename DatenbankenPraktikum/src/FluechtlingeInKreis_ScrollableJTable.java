@@ -10,15 +10,11 @@ import javax.swing.JTable;
 
 
 
-public class FluechtlingeInKreis_ScrollableJTable extends javax.swing.JFrame{
+public class FluechtlingeInKreis_ScrollableJTable extends javax.swing.JFrame{	
 	
-	private final String databaseUsername = "DB_Pr2015_02_01";
-	private final String databasePassword = "Test123!";
-	
-	
-	public FluechtlingeInKreis_ScrollableJTable(String kreis) throws SQLException{
+	public FluechtlingeInKreis_ScrollableJTable(String kreis, String databaseUsername, String databasePassword) throws SQLException{
 		this.setDefaultCloseOperation(HIDE_ON_CLOSE);
-        this.setTitle("Flüchtlinge in dem Kreis " + kreis);
+        this.setTitle("Fluechtlinge in dem Kreis " + kreis);
         
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new BorderLayout());
@@ -51,7 +47,6 @@ public class FluechtlingeInKreis_ScrollableJTable extends javax.swing.JFrame{
         
         int index = 0;
 		while (rs.next()) {
-			System.out.println("Flüchtling: " + rs.getString(1));
 			FDaten[index][0] = rs.getString(1);
 			FDaten[index][1] = rs.getString(2);
 			FDaten[index][2] = rs.getString(3);

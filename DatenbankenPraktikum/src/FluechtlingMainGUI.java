@@ -8,6 +8,11 @@ import javax.swing.*;
 
 
 public class FluechtlingMainGUI extends JFrame{
+	
+	private String databaseUsername;
+	
+	private String databasePassword;
+	
 	private JButton BundeslaenderSehen;
 
 	private JLabel Ueberschrift;
@@ -16,10 +21,11 @@ public class FluechtlingMainGUI extends JFrame{
 
 	private int id;
 	
-	public FluechtlingMainGUI(int idx) {
+	public FluechtlingMainGUI(int idx, String databaseUsername, String databasePassword) {
 		super("Fluechtling");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+		this.databaseUsername = databaseUsername;
+		this.databasePassword = databasePassword;
 		this.setLayout(new BorderLayout(0,5));
 
 		id = idx;
@@ -32,7 +38,7 @@ public class FluechtlingMainGUI extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				try {
-					new Bundesland_ScrollableJTable();
+					new Bundesland_ScrollableJTable(databaseUsername,databasePassword);
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					System.out.println("Klasse: SacharbeiterMainGUI - AngeboteAnzeigen()");
@@ -64,10 +70,6 @@ public class FluechtlingMainGUI extends JFrame{
 		this.setLocationRelativeTo(null);
 		this.setVisible(true);
 
-	}
-
-	public static void main(String[] args) {
-		new FluechtlingMainGUI();
 	}
 
 }

@@ -23,7 +23,7 @@ public class LoginFenster extends javax.swing.JFrame{
 		JLabel leer = new JLabel();
 		JTextField benutzer = new JTextField("");
 		JPasswordField pass = new JPasswordField("");
-		String[] auswahl = {"Flüchtling", "Helfer", "Sachbearbeiter"};
+		String[] auswahl = {"Fluechtling", "Helfer", "Sachbearbeiter"};
 		JComboBox<String> auswahlComboBox = new JComboBox<String>(auswahl);
 		auswahlComboBox.setSelectedIndex(2);
 		JButton login = new JButton("Login");
@@ -33,28 +33,27 @@ public class LoginFenster extends javax.swing.JFrame{
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
-				System.out.println("Benutzername: " + benutzer.getText());
+				/*System.out.println("Benutzername: " + benutzer.getText());
 				System.out.println("Passwort: " + new String(pass.getPassword()));
-				System.out.println("Anmelden als " + auswahl[auswahlComboBox.getSelectedIndex()]);
+				System.out.println("Anmelden als " + auswahl[auswahlComboBox.getSelectedIndex()]);*/
 				
 				Loginanwendung login = new Loginanwendung();
-				int loginData = login.login(benutzer.getText(), new String(pass.getPassword()), (String) auswahlComboBox.getSelectedItem());
-				if(loginData == -1){
+				int personId = login.login(benutzer.getText(), new String(pass.getPassword()), (String) auswahlComboBox.getSelectedItem());
+				if(personId == -1){
 					leer.setText("Login Fehler!");
 					leer.setForeground(Color.RED);
 				}
 				else {
-					System.out.println("erfolgreich");
-					parent.dispose();
 					f.dispose();
+					parent.dispose();
 					if (auswahlComboBox.getSelectedIndex() == 0) {
-						new FluechtlingMainGUI();
+						new FluechtlingMainGUI(personId,"DB_PR2015_02_01","Test123!");
 					}
 					if (auswahlComboBox.getSelectedIndex() == 1) {
-						new HelferMainGUI();
+						new HelferMainGUI(personId,"DB_PR2015_02_02","Test123!");
 					}
 					if (auswahlComboBox.getSelectedIndex() == 2) {
-						new SachbearbeiterMainGUI();
+						new SachbearbeiterMainGUI(personId,"DB_PR2015_02_03","Test123!");
 					}
 				}
 			}

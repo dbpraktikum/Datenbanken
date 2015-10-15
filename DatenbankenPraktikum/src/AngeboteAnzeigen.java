@@ -9,17 +9,12 @@ import javax.swing.*;
  
 public class AngeboteAnzeigen extends JFrame {
 	
-	private JLabel SprachkurseL;
-	private JLabel AnderekurseL;
-	
-    private final String databaseUsername = "DB_PR2015_02_01";
-	private final String databasePassword = "Test123!";
     private JLabel ueberschrift1;
     private JLabel ueberschrift2;
      
 
  
-    public AngeboteAnzeigen() throws SQLException{
+    public AngeboteAnzeigen(String databaseUsername, String databasePassword) throws SQLException{
         super("Angebote der Gemeinde");
         setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         
@@ -110,16 +105,5 @@ public class AngeboteAnzeigen extends JFrame {
             this.setVisible(true);
              
         }
-         
         
-     
-    
- 
-    public static void main(String[] args) throws SQLException {
-        AngeboteAnzeigen bl = new AngeboteAnzeigen();
-        bl.setVisible(true);
-    }
- 
-
-
 }
