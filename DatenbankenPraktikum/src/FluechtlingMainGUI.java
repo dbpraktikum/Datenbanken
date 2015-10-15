@@ -14,12 +14,15 @@ public class FluechtlingMainGUI extends JFrame{
 	
 	private JPanel buttonGroup;
 
-	public FluechtlingMainGUI() {
+	private int id;
+	
+	public FluechtlingMainGUI(int idx) {
 		super("Fluechtling");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		this.setLayout(new BorderLayout(0,5));
 
+		id = idx;
 		BundeslaenderSehen = new JButton("Bundeslaender Anzeigen");
 		
 		

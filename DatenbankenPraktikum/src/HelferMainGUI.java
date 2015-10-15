@@ -16,14 +16,16 @@ public class HelferMainGUI extends JFrame{
 	private JLabel Ueberschrift;
 	
 	private JPanel buttonGroup;
+	
+	private int id;
 
-	public HelferMainGUI() {
+	public HelferMainGUI(int idx) {
 		super("Helfer");
 		//setLocation(500, 500);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		this.setLayout(new BorderLayout(0,5));
-
+		id = idx;
 		AlleAngeboteSehen = new JButton("Alle Angebote Anzeigen");
 		EigeneAngeboteSehen = new JButton("Eigene Angebote Anzeigen");
 		VorsteherDerUnterkuenfteSehen = new JButton("Vorsteher der Unterkuenfte Anzeigen");

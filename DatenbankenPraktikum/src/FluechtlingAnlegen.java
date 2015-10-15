@@ -84,14 +84,15 @@ public class FluechtlingAnlegen extends JFrame {
 	
 	JButton save;
 
-   public FluechtlingAnlegen(){
+	private int id;
+   public FluechtlingAnlegen(int idx){
 	   super("Flüchtling Anlegen");
 		this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		this.setLayout(new GridLayout(36,5));
 		this.setLocation(500,0);
 		this.setSize(2000, 2000);
 		
-	   
+	   id = idx;
 	  eMail.setText("E-Mail");
 	  vorname.setText("Vorname");
 	  nachname.setText("Nachname");
@@ -238,7 +239,7 @@ public class FluechtlingAnlegen extends JFrame {
 			                                                              String bezeichnung, String art) {*/
               String antragstatus2 =antragstatus1.getText();
               
-              int sid2=3;
+              int sid2= id;
               String thema2 =Thema1.getText();
               
               String date2=Date1.getText();
@@ -286,7 +287,7 @@ public class FluechtlingAnlegen extends JFrame {
 	            float longr, String staat, String stadt, String staatreg, String stadtreg*/
    
    public static void main (String...args){
-	   FluechtlingAnlegen fa = new FluechtlingAnlegen();
+	   FluechtlingAnlegen fa = new FluechtlingAnlegen(3);
 	   fa.setVisible(true);
    }
 }
