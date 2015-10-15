@@ -111,12 +111,17 @@ public class SachbearbeiterAnlegen extends JFrame {
 	                  String nachname =Nachname1.getText();
 	                  String tel =Tel1.getText();
 	                  String handy =Handy1.getText();
-	                  String gid =GId1.getText();
+	                  
 	                  String aktiv=aktiv1.getText();
 	                  String ebene =Ebene1.getText();
-	                  
+	                  /*  String email,
+	            String vorname, String nachname, String tel, String handy,
+	            int gemeinde, String aktiv, String strasse, int plz,
+	            String hausnummer, String stadt, String ebene*/
 	             
-	                  //StoredProcedure.anlegenSachbearbeiter(DatabaseConnector.connectToDatabase("DB_PR2015_02_01", "Test123!"), strasse, plz, hausnummer, stadt, email, vorname, nachname, tel, handy, gid, aktiv, ebene );
+	                  StoredProcedure.anlegenSacharbeiter(DatabaseConnector.connectToDatabase("DB_PR2015_02_01", "Test123!"),email,  vorname, nachname, tel, handy,
+	                		    aktiv, strasse, plz, hausnummer,
+	                		  stadt,  ebene );
 	             }   
 	         });
 	      
@@ -128,5 +133,6 @@ public class SachbearbeiterAnlegen extends JFrame {
 	       sa.setVisible(true);
 	   }
 	 
+
 
 }
