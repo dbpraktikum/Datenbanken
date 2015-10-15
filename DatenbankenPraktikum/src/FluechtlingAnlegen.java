@@ -263,7 +263,7 @@ public class FluechtlingAnlegen extends JFrame {
               /*  float lat, float lonG, float latr,
               float longr, String staat, String stadt, String staatreg, String stadtreg*/
         
-              StoredProcedure.anlegenFluechtling(DatabaseConnector.connectToDatabase("DB_PR2015_02_01", "Test123!"), email2, vorname2, nachname2,
+              StoredProcedure.anlegenFluechtling(DatabaseConnector.connectToDatabase("DB_PR2015_02_03", "Test123!"), email2, vorname2, nachname2,
             		  tel2, handy2, geschlecht2, passExistiert2, gebDatum2,   unterkunft2, einzugsdatum2, wunschland2, 
             		  originalNachname2,
             		  originalVorname2, aufenthalt2, gebdatValidiert2, antragstatus2, sid2, thema2, date2, sprache2, 
