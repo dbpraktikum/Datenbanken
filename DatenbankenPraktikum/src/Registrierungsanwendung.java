@@ -13,13 +13,13 @@ public class Registrierungsanwendung {
 	         "databaseName=DB_PR2015_02";
 	
 	
-	public boolean registrieren(int personId, String userName, String userPassword, String rolle) {
+	public boolean registrieren(int personId, String userName, String userPassword) {
 		
 		
 		
 		CallableStatement stmt = null;
 		StringBuilder sql = new StringBuilder("{call " + "registrieren" + "(?");
-		for(int i = 0; i < 4; i++){
+		for(int i = 0; i < 3; i++){
 			sql.append(",?");
 			System.out.println(i);
 		}
@@ -38,7 +38,6 @@ public class Registrierungsanwendung {
 		
 		try {
 			stmt.setInt("p_id", personId);
-			stmt.setString("rolle", rolle);
 			stmt.setString("benutzername", userName);
 			stmt.setString("passwort", userPassword);
 			stmt.registerOutParameter("success", java.sql.Types.INTEGER);

@@ -78,7 +78,7 @@ public class MainGUI extends javax.swing.JFrame{
 		this.add(panel1, BorderLayout.CENTER);
 		this.add(panel2, BorderLayout.SOUTH);
 		this.pack();
-		this.setSize(800, 250);
+		this.setSize(800, 350);
 		this.setLocationRelativeTo(null);
 		this.setVisible(true);
 		

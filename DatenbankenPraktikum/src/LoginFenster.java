@@ -71,7 +71,7 @@ public class LoginFenster extends javax.swing.JFrame{
 		this.add(leer);
 		this.add(login);
 		this.pack();
-		this.setSize(275, 150);
+		this.setSize(285, 150);
 		this.setLocationRelativeTo(null);
 		this.setVisible(true);
 	}
