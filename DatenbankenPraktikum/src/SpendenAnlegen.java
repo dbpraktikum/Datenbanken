@@ -1,5 +1,8 @@
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -59,10 +62,12 @@ public class SpendenAnlegen extends JFrame{
 	      speichern = new JButton("Spende speichern");
 	    speichern.addActionListener(new ActionListener(){
 	          
-	        @Override
-	        public void actionPerformed(ActionEvent e) {
-	            // TODO Auto-generated method stub
-	        /*  @Name nvarchar(30),
+	       
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				/*  @Name nvarchar(30),
 	            @Anzahl int,
 	            @GId int,
 	             
@@ -82,7 +87,8 @@ public class SpendenAnlegen extends JFrame{
 	            String handy = Handy1.getText();
 	         
 	            StoredProcedure.anlegenSpenden(DatabaseConnector.connectToDatabase("DB_PR2015_02_01", "Test123!"), name, anzahl, gid, email, vorname, nachname, tel, handy);
-	        }
+
+			}
 	          
 	    });
 	       
