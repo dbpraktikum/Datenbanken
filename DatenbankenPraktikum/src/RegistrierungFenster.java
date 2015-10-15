@@ -10,23 +10,22 @@ import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-public class LoginFenster extends javax.swing.JFrame{
-	
-	public LoginFenster(JFrame parent){
-		super("Anmeldung");
+public class RegistrierungFenster extends javax.swing.JFrame{
+	public RegistrierungFenster(JFrame parent){
+		super("Registrierung");
 		JFrame f = this;
-		this.setDefaultCloseOperation(HIDE_ON_CLOSE);
+		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setLayout(new GridLayout(4,2,10,0));
 		JLabel benutzername = new JLabel("Benutzername:");
 		JLabel passwort = new JLabel("Passwort:");
-		JLabel anmeldung = new JLabel("Anmelden als");
+		JLabel anmeldung = new JLabel("Registrieren als");
 		JLabel leer = new JLabel();
 		JTextField benutzer = new JTextField("");
 		JPasswordField pass = new JPasswordField("");
 		String[] auswahl = {"Flüchtling", "Helfer", "Sachbearbeiter"};
 		JComboBox<String> auswahlComboBox = new JComboBox<String>(auswahl);
 		auswahlComboBox.setSelectedIndex(2);
-		JButton login = new JButton("Login");
+		JButton login = new JButton("Registrieren");
 		
 		login.addActionListener(new ActionListener(){
 
@@ -35,28 +34,28 @@ public class LoginFenster extends javax.swing.JFrame{
 				// TODO Auto-generated method stub
 				System.out.println("Benutzername: " + benutzer.getText());
 				System.out.println("Passwort: " + new String(pass.getPassword()));
-				System.out.println("Anmelden als " + auswahl[auswahlComboBox.getSelectedIndex()]);
+				System.out.println("Registriert als " + auswahl[auswahlComboBox.getSelectedIndex()]);
 				
+				//TODO Registration überprüfen
 				Loginanwendung login = new Loginanwendung();
-				String[] loginData = login.login(benutzer.getText(), new String(pass.getPassword()), (String) auswahlComboBox.getSelectedItem());
-				if(loginData[0] == null){
-					leer.setText("Login Fehler!");
+				//String[] loginData = login.login(benutzer.getText(), new String(pass.getPassword()), (String) auswahlComboBox.getSelectedItem());
+				if(/*loginData[0] == null*/true){
+					leer.setText("Registration Fehler!");
 					leer.setForeground(Color.RED);
 				}
-				else {
+				/*else {
 					System.out.println("erfolgreich");
-					parent.dispose();
 					f.dispose();
 					if (auswahlComboBox.getSelectedIndex() == 0) {
-						new FluechtlingMainGUI();
-					}
+											}
 					if (auswahlComboBox.getSelectedIndex() == 1) {
-						new HelferMainGUI();
+						
 					}
 					if (auswahlComboBox.getSelectedIndex() == 2) {
-						new SachbearbeiterMainGUI();
+						
 					}
-				}
+				}*/
+				parent.dispose();
 			}
 			
 		});
@@ -74,5 +73,9 @@ public class LoginFenster extends javax.swing.JFrame{
 		this.setSize(275, 150);
 		this.setLocationRelativeTo(null);
 		this.setVisible(true);
+	}
+
+	public static void main(String[] args){
+		
 	}
 }
