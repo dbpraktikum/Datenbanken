@@ -68,7 +68,7 @@ public class MeineFluechtlingeSehen_ScrollableJTable extends javax.swing.JFrame{
 	        JScrollPane pane = new JScrollPane(table);
 	        mainPanel.add(pane, BorderLayout.CENTER);
 	          
-	        JButton Fanzeigen = new JButton("Fluechtling anzeigen");
+	        JButton Fanzeigen = new JButton("Fluechtling bearbeiten");
 	        Fanzeigen.addActionListener(new ActionListener(){
 	              
 	            @Override

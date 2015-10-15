@@ -44,7 +44,7 @@ public class SpendenAnlegen extends JFrame{
 	     
 	    public SpendenAnlegen(String databaseUsername, String databasePassword){
 	        super("Spende Anlegen");
-	        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	        this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 	        this.setLayout(new GridLayout(9,2));
 	        this.setLocation(6000,3000);
 	        this.setSize(400,400);
