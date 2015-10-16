@@ -46,7 +46,6 @@ public class Kreis_ScrollableJTable extends javax.swing.JFrame{
 		
 		int index = 0;
 		while(rs.next()){
-			System.out.println("Kreis: " + rs.getString(1));
 			KDaten[index][0] = rs.getString(1);
 			KDaten[index][1] = rs.getString(2);
 			KDaten[index][2] = rs.getString(3);

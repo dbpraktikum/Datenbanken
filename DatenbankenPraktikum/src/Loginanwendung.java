@@ -46,7 +46,6 @@ public class Loginanwendung {
 		String sql = "select DB_PR2015_02.dbo.anmelden('" + userId + "' , '" + passwort+"' , '" + rolle +"' )";
 		Statement stmt;
 		try {
-			System.out.println(sql);
 			stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
 			while(rs.next()){

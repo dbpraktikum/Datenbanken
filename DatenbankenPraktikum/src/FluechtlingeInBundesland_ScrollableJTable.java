@@ -48,7 +48,6 @@ public class FluechtlingeInBundesland_ScrollableJTable extends javax.swing.JFram
         
         int index = 0;
 		while (rs.next()) {
-			System.out.println("Flüchtling: " + rs.getString(1));
 			FDaten[index][0] = rs.getString(1);
 			FDaten[index][1] = rs.getString(2);
 			FDaten[index][2] = rs.getString(3);

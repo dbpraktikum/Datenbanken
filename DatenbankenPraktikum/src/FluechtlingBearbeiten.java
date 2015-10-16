@@ -88,8 +88,6 @@ public class FluechtlingBearbeiten extends JFrame {
 	 
 	       
 	      while(rs.next()){
-		    System.out.println(rs.getString(1));
-		    System.out.println(rs.getString(2));
 		    FDaten[1][0] = rs.getString(1);
 		    FDaten[1][1] = rs.getString(2);
 		    FDaten[1][2] = rs.getString(3);

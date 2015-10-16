@@ -21,7 +21,6 @@ public class Registrierungsanwendung {
 		StringBuilder sql = new StringBuilder("{call " + "registrieren" + "(?");
 		for(int i = 0; i < 3; i++){
 			sql.append(",?");
-			System.out.println(i);
 		}
 		sql.append(")}");
 		try {

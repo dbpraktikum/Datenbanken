@@ -41,7 +41,6 @@ public class Kreis_ScrollableJTable_Sachbearbeiter extends javax.swing.JFrame{
 		
 		int index = 0;
 		while(rs.next()){
-			System.out.println("Kreis: " + rs.getString(1));
 			KDaten[index][0] = rs.getString(1);
 			KDaten[index][1] = rs.getString(2);
 			KDaten[index][2] = rs.getString(3);
@@ -59,7 +58,6 @@ public class Kreis_ScrollableJTable_Sachbearbeiter extends javax.swing.JFrame{
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if(e.getButton() == 1){
-					System.out.println("1 - Linksklick");
 					try {
 						new Gemeinde_ScrollableJTable_Sachbearbeiter("" + table.getValueAt(table.rowAtPoint(e.getPoint()),0), databaseUsername, databasePassword);
 					} catch (SQLException e1) {
@@ -69,7 +67,6 @@ public class Kreis_ScrollableJTable_Sachbearbeiter extends javax.swing.JFrame{
 					}
 				}
 				if(e.getButton() == 3){
-					System.out.println("3 - Rechtsklick");
 					try {
 						new FluechtlingeInKreis_ScrollableJTable("" + table.getValueAt(table.rowAtPoint(e.getPoint()),0), databaseUsername, databasePassword);
 					} catch (SQLException e1) {

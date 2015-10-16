@@ -41,7 +41,6 @@ public class Gemeinde_ScrollableJTable extends javax.swing.JFrame{
         
         int index = 0;
 		while (rs.next()) {
-			System.out.println("Gemeinde: " + rs.getString(2));
 			GDaten[index][0] = rs.getString(1);
 			GDaten[index][1] = rs.getString(2);
 			GDaten[index][2] = rs.getString(3);

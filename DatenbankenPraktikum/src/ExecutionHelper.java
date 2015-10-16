@@ -58,7 +58,6 @@ public class ExecutionHelper {
 		sql.append(")");
 		try {
 			stmt = conn.createStatement();
-			System.out.println(sql.toString());
 			rs = stmt.executeQuery(sql.toString());
 		} catch (SQLException e) {
 			e.printStackTrace();

@@ -30,8 +30,6 @@ public class RegistrierungFenster extends javax.swing.JFrame{
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
-				System.out.println("Benutzername: " + benutzer.getText());
-				System.out.println("Passwort: " + new String(pass.getPassword()));
 				
 				//TODO Registration überprüfen
 				Registrierungsanwendung reg = new Registrierungsanwendung();
@@ -41,7 +39,6 @@ public class RegistrierungFenster extends javax.swing.JFrame{
 					leer.setForeground(Color.RED);
 				}
 				else {
-					System.out.println("erfolgreich");
 					f.dispose();
 					new LoginFenster(parent);
 				}

@@ -42,7 +42,6 @@ public class UnterkunftInGemeinde_ScrollableJTable_Sachbearbeiter extends javax.
         
         int index = 0;
 		while (rs.next()) {
-			System.out.println("Unterkunft: " + rs.getString(1));
 			GDaten[index][0] = rs.getString(1);
 			GDaten[index][1] = rs.getString(4);
 			GDaten[index][2] = rs.getString(5);
