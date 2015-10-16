@@ -8,7 +8,7 @@ import java.sql.Statement;
 public class Loginanwendung {
 	
 	//Klassenvariablen in denen die Logininformationen zur Datenbank gespeichert werden.
-	private final String databaseUserName = "DB_PR2015_02_01";
+	private final String databaseUserName = "DB_PR2015_02";
 	private final String databaseUserPassword = "Test123!";
 	private final String dataBaseUrl = "jdbc:sqlserver://sqlserver.informatik.uni-mainz.de;" +
 	         "databaseName=DB_PR2015_02";
