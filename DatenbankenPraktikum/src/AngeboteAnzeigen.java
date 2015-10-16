@@ -13,11 +13,12 @@ public class AngeboteAnzeigen extends JFrame {
     private JLabel ueberschrift2;
      
 
+
  
     public AngeboteAnzeigen(String databaseUsername, String databasePassword) throws SQLException{
         super("Angebote der Gemeinde");
         setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-        
+    
         ResultSet rsSprachkurs = Functions.angeboteSehenSprachkurse(DatabaseConnector.connectToDatabase(databaseUsername, databasePassword), 1); 
         int sprachkurseAnzahl = 0;
         while(rsSprachkurs.next()){

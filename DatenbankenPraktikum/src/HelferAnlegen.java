@@ -31,7 +31,7 @@ public class HelferAnlegen extends JFrame {       /*   @pid int,
 		JLabel tel = new JLabel();
 		JLabel handy = new JLabel();
 		JLabel gemeinde = new JLabel();
-		JLabel adresse = new JLabel();
+		 
 		JLabel Strasse = new JLabel();
 		JLabel PLZ = new JLabel();
 		JLabel Hausnummer = new JLabel();
@@ -45,7 +45,7 @@ public class HelferAnlegen extends JFrame {       /*   @pid int,
 		JTextField tel1 = new JTextField();
 		JTextField handy1 = new JTextField();
 		JTextField gemeinde1 = new JTextField();
-		JTextField adresse1 = new JTextField();
+		 
 		JTextField Strasse1 = new JTextField();
 		JTextField PLZ1 = new JTextField();
 		JTextField Hausnummer1 = new JTextField();
@@ -62,16 +62,16 @@ public class HelferAnlegen extends JFrame {       /*   @pid int,
 		   
 	 
 		  eMail.setText("EMail");
-		  vorname.setText("Vorname");
-		  nachname.setText("Nachname");
+		  vorname.setText("Vorname *");
+		  nachname.setText("Nachname *");
 		  tel.setText("Tel");
 		  handy.setText("Handy");
-		  gemeinde.setText("Gemeinde");
-		  adresse.setText("Adresse");
-		  Strasse.setText("Strasse");
-		  PLZ.setText("PLZ");
-		  Hausnummer.setText("Hausnummer");
-		  Stadt.setText("Stadt");
+		  gemeinde.setText("Gemeinde *");
+		  
+		  Strasse.setText("Strasse *");
+		  PLZ.setText("PLZ *");
+		  Hausnummer.setText("Hausnummer *");
+		  Stadt.setText("Stadt *");
 		  
 		  
 		 
@@ -88,8 +88,8 @@ public class HelferAnlegen extends JFrame {       /*   @pid int,
 		  this.getContentPane().add ( eMail1 ) ;
 		  this.getContentPane().add ( gemeinde ) ;
 		  this.getContentPane().add ( gemeinde1 ) ;
-		  this.getContentPane().add ( adresse ) ;
-		  this.getContentPane().add ( adresse1 ) ;
+		 
+		 
 		  this.getContentPane().add ( Stadt ) ;
 		  this.getContentPane().add ( Stadt1 ) ;
 		  this.getContentPane().add ( Strasse ) ;

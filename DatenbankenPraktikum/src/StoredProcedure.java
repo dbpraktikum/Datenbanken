@@ -141,6 +141,9 @@ public class StoredProcedure {
 	 
 	        CallableStatement cstmt = ExecutionHelper.prepareCall(conn,
 	                "GesHelferAnlegen",10);
+	        if(email== "") {email=null;}
+	        if(tel==""){tel=null;}
+	        if(handy==""){handy=null;}
 	 
 	        try {
 	            cstmt.setString("eMail", email);
@@ -174,7 +177,12 @@ public class StoredProcedure {
 
 		CallableStatement cstmt = ExecutionHelper.prepareCall(conn,
 				"GesSachbearbeiter",14);
-
+		
+		 if(eMail== "") {eMail=null;}
+	        if(tel==""){tel=null;}
+	        if(handy==""){handy=null;}
+	        if(aktiv==""){aktiv=null;}
+	        if(ebene==""){ebene=null;}
 		if(gemeinde == 0) {gemeinde = (Integer) null;}
 		if(kreis == "") {kreis = null;}
 		if(bundesland == "") {bundesland = null;}

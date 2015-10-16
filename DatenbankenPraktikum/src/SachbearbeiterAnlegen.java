@@ -61,18 +61,18 @@ public class SachbearbeiterAnlegen extends JFrame {
 	      
 	      Stadt.setText("Stadt * ");
 	       
-	      email.setText("EMail * ");
+	      email.setText("EMail");
 	      Vorname.setText("Vorname * ");
 	      Nachname.setText("Nachname * ");
-	      Tel.setText("Tel * ");
+	      Tel.setText("Tel ");
 	      Handy.setText("Handy");
 	         
 	      GId.setText("arbeitet in Gemeinde (ID) * ");
 	      Bundesland.setText("oder Bundesland (Name)");
 	      Kreis.setText("oder Kreis (Name)");
 	      
-	      aktiv.setText("activ * ");
-	      Ebene.setText("Ebene * ");
+	      aktiv.setText("activ *");
+	      Ebene.setText("Ebene *");
 	      
 	       
 	      save = new JButton("Sachbearbeiter speichern");
