@@ -94,40 +94,40 @@ public class FluechtlingAnlegen extends JFrame {
 		
 	   id = idx;
 	  eMail.setText("E-Mail");
-	  vorname.setText("Vorname");
-	  nachname.setText("Nachname");
+	  vorname.setText("Vorname *");
+	  nachname.setText("Nachname *");
 	  tel.setText("Telefon");
 	  handy.setText("Handy");
 
-	  Geschlecht.setText("Geschlecht (m/w/u)");
-	  Pass.setText("Pass (ja/nein)");
-	  Geburtsdatum.setText("Geburtsdatum yyyy-mm-tt");
+	  Geschlecht.setText("Geschlecht (m/w/u) *");
+	  Pass.setText("Pass (ja/nein) *");
+	  Geburtsdatum.setText("Geburtsdatum yyyy-mm-tt *");
 	  
-	  Unterkunft.setText("Unterkunft (Id)");
-	  Einzugsdatum.setText("Einzugsdatum");
+	  Unterkunft.setText("Unterkunft (Id) *");
+	  Einzugsdatum.setText("Einzugsdatum *");
 	  Wunschland.setText("Wuschland");
 	  OriginalNachname.setText("OriginalNachname");
 	  OriginalVorname.setText("OriginalVorname");
 	  Aufenhaltsland.setText("Aufenhaltsland");  
-	  GeburtsdatumV.setText("Geburtsdaum bestaetigt (j/n)");
+	  GeburtsdatumV.setText("Geburtsdaum bestaetigt (j/n) *");
 	  antragstatus.setText("Antragsstatus");
 	 
-	  Thema.setText("Thema");
-	  Date.setText("Date yyyy-mm-tt");
-	  Sprache.setText("Sprache");
+	  Thema.setText("Thema *");
+	  Date.setText("Startdatum yyyy-mm-tt *");
+	  Sprache.setText("Sprache *");
 	  Sprachniveau.setText("Sprachniveau  (schlecht,ausreichend,gut,fliessend)");
 	  Schreibniveau.setText("Schreibniveau  (schlecht,ausreichend,gut,fliessend)");
 	  Leseniveau.setText("Leseniveau  (schlecht,ausreichend,gut,fliessend)");
 	  Bezeichnung.setText("Bezeichnung");
 	  Art.setText("Art");
-	  lat.setText("breitengrad herkunft");
-	  lonG.setText("laengengrad herkunft");
-	  latr.setText("breitengrad registration");
-	  longr.setText("laengengrad registration");
-	  staat.setText("staat herkunft");
-	  stadt.setText("stadt herkunft");
-	  staatreg.setText("staat reg");
-	  stadtreg.setText("stadt reg");
+	  lat.setText("breitengrad herkunft *");
+	  lonG.setText("laengengrad herkunft *");
+	  latr.setText("breitengrad registration *");
+	  longr.setText("laengengrad registration *");
+	  staat.setText("staat herkunft *");
+	  stadt.setText("stadt herkunft *");
+	  staatreg.setText("staat reg *");
+	  stadtreg.setText("stadt reg *");
 	  
 	 
 

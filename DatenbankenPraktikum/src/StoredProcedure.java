@@ -21,7 +21,50 @@ public class StoredProcedure {
 	            String longr, String staat, String stadt, String staatreg, String stadtreg) {
 	        CallableStatement cstmt = ExecutionHelper.prepareCall(conn,
 	                "GesFluechtlingAnlegen",33);
+	        
+	        if(email== "") {email=null;}
+	        if(tel==""){tel=null;}
+	        if(handy==""){handy=null;}
+	        if(geschlecht==""){geschlecht=null;}
+	        if(wunschland==""){wunschland=null;}
+	        if(originalNachname==""){originalNachname=null;}
+	        if(originalVorname==""){originalVorname=null;}
+	        if(aufenthalt==""){aufenthalt=null;}
+	        if(gebdatValidiert==""){gebdatValidiert=null;}
+	        if(antragstatus==""){antragstatus=null;}
+	        
+	        if(sprachniveau==""){sprachniveau=null;}
+	        if(schreibniveau==""){schreibniveau=null;}
+	        if(leseniveau==""){leseniveau=null;}
+	        if(bezeichnung==""){bezeichnung=null;}
+	        if(art==""){art=null;}
+	    /*   eMail.setText("E-Mail");
 	 
+	  
+	  tel.setText("Telefon");
+	  handy.setText("Handy");
+
+	  Geschlecht.setText("Geschlecht (m/w/u)");
+	 
+	  
+	  
+	  Wunschland.setText("Wuschland");
+	  OriginalNachname.setText("OriginalNachname");
+	  OriginalVorname.setText("OriginalVorname");
+	  Aufenhaltsland.setText("Aufenhaltsland");  
+	  GeburtsdatumV.setText("Geburtsdaum bestaetigt (j/n)");
+	  antragstatus.setText("Antragsstatus");
+	 
+	 
+	 
+	  Sprachniveau.setText("Sprachniveau  (schlecht,ausreichend,gut,fliessend)");
+	  Schreibniveau.setText("Schreibniveau  (schlecht,ausreichend,gut,fliessend)");
+	  Leseniveau.setText("Leseniveau  (schlecht,ausreichend,gut,fliessend)");
+	  Bezeichnung.setText("Bezeichnung");
+	  Art.setText("Art");
+	  */
+	        
+	        
 	        try {
 	            cstmt.setString("eMail", email);
 	            cstmt.setString("vorname", vorname);
